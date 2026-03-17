@@ -2,7 +2,7 @@
 .thumbs.db
 .history
 node_modules
-
+package-lock.json
 # Quasar core related directories
 .quasar
 /dist
