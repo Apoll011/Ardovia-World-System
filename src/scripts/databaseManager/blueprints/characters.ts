@@ -1820,6 +1820,18 @@ export const charactersBlueprint: I_Blueprint = {
       }
     },
     {
+      id: "npcsRelationships",
+      name: "NPC Relationships",
+      type: "manyToManyRelationship",
+      icon: "mdi-account-multiple",
+      sizing: 12,
+      tooltip: "Other characters this NPC has a notable relationship with. Use the dedicated relationship fields (Friends/Allies, Enemies, Family, Complicated) in the Connections - Relationships section to record the nature of each relationship.",
+      relationshipSettings: {
+        connectedObjectType: "characters",
+        connectedField: "npcsRelationships"
+      }
+    },
+    {
       id: "breakSpoilers",
       name: "Secrets/Spoilers/DM notes",
       type: "break",
