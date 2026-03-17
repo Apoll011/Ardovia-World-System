@@ -1,7 +1,7 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const languagesBlueprint: I_Blueprint = {
   _id: "languages",
-  order: 330,
+  order: 48,
   namePlural: "Languages",
   nameSingular: "Language",
   icon: "mdi-book-alphabet",

@@ -2,11 +2,11 @@ import { RPGSystemsStats } from "./../extraFieldLists/RPGSystemsStats"
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const conditionsBlueprint: I_Blueprint = {
   _id: "conditions",
-  order: 150,
-  namePlural: "Afflictions/Boons/Conditions",
-  nameSingular: "Affliction/Boon/Condition",
+  order: 48,
+  namePlural: "Conditions & Afflictions",
+  nameSingular: "Condition/Affliction",
   icon: "mdi-virus",
-  category: "Details",
+  category: "Characters",
   extraFields: [
     {
       id: "breakDocumentSettings",

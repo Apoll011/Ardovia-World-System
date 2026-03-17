@@ -1,8 +1,8 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const eventsBlueprint: I_Blueprint = {
   _id: "events",
-  order: 350,
-  namePlural: "Events",
+  order: 42,
+  namePlural: "Events & History",
   nameSingular: "Event",
   icon: "mdi-calendar-text",
   category: "World",

@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
-export const npcSchedulesBlueprint: I_Blueprint = {
-  _id: "npcSchedules",
-  order: 395,
-  namePlural: "NPC Schedules",
-  nameSingular: "NPC Schedule",
-  icon: "mdi-calendar-clock",
-  category: "World",
+export const gameMechanicsBlueprint: I_Blueprint = {
+  _id: "gameMechanics",
+  order: 44,
+  nameSingular: "Mechanic/Ability",
+  namePlural: "Game Mechanics & Abilities",
+  icon: "mdi-sword-cross",
+  category: "Gameplay",
   extraFields: [
     {
       id: "breakDocumentSettings",
@@ -17,7 +17,7 @@ export const npcSchedulesBlueprint: I_Blueprint = {
       id: "name",
       name: "Name",
       type: "text",
-      icon: "mdi-calendar-clock",
+      icon: "mdi-sword-cross",
       sizing: 3
     },
     {
@@ -27,10 +27,11 @@ export const npcSchedulesBlueprint: I_Blueprint = {
       tooltip:
         `This field is used to build up custom hierarchical tree structure in the main list of items in the left side of the app.
         <br> You can use this for an infinite amount of sub-levels to the hierarchical structure.
+        <br> An example would be multiple sub-groups (provinces) of Roman Empire belonging under the main political group called "Roman Empire".
         `,
       sizing: 3,
       relationshipSettings: {
-        connectedObjectType: "npcSchedules"
+        connectedObjectType: "gameMechanics"
       }
     },
     {
@@ -75,7 +76,8 @@ export const npcSchedulesBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to minor document mode.
         <br>
-        A document with minor document mode toggled on will not show in any other relationship searches.
+        A document with minor document mode toggled on will not show in any other relationship searches.<br>
+        The idea behind this setting is to allow for creation of documents that will not clutter the search, but could be theoretically relevant in some very specific cases to the story (eg: distant relatives of a character).
         `,
       sizing: 3
     },
@@ -87,7 +89,7 @@ export const npcSchedulesBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to dead/gone/destroyed mode.
         <br>
-        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it.
+        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it - showing that it is no longer a part of the current timeline.
         `,
       sizing: 3
     },
@@ -111,6 +113,7 @@ export const npcSchedulesBlueprint: I_Blueprint = {
       tooltip:
         `In case the default sorting via alphabet in the hierarchical tree on the left is inadequate for your needs, this field allows you to fill custom numbers to order by that get placed before the default alphabetical order.
         <br>It is heavily suggested to "pad-out" the custom order numbers by writing for example 100 (or least 10) instead of 1.
+        <br>This allows for extra "padding" between the items in case a new one needs to be added in the middle without needing to redo the custom order on all documents.
         `,
       sizing: 3
     },
@@ -123,21 +126,12 @@ export const npcSchedulesBlueprint: I_Blueprint = {
         `Tags are used to sort the same (or even different) document types into a custom groups based on your needs.
         <br>
         A document may have any number of tags, but each tag can be present only once.
+        <br>
+        This limitation also applies to any variation of lower or upper case iterations of the same tag.
+        <br>
+        Example: A tag called "Player Party" will be considered the same tag as "player party", "PlAyER PaRtY" or anything similar.
         `,
       sizing: 8
-    },
-    {
-      id: "docTemplate",
-      name: "Document Template",
-      type: "documentTemplate",
-      icon: "mdi-script-text-outline",
-      tooltip:
-        `
-        Document templates are used to determine which fields will the current
-        <br>
-        document show both in view and edit mode.
-        `,
-      sizing: 4
     },
     {
       id: "extraClasses",
@@ -152,124 +146,51 @@ export const npcSchedulesBlueprint: I_Blueprint = {
       sizing: 12
     },
     {
-      id: "categoryDescription",
-      name: "Category description",
-      type: "wysiwyg",
-      icon: "mdi-folder-edit-outline",
+      id: "otherNames",
+      name: "Other Names & Epithets",
+      type: "list",
+      icon: "mdi-book-plus",
       sizing: 12
     },
+
+    { id: "breakMechanicInfo", name: "Mechanic Information", type: "break", sizing: 12 },
     {
-      id: "breakBasic",
-      name: "Basic information",
-      type: "break",
-      sizing: 12
-    },
-    {
-      id: "npc",
-      name: "NPC",
-      type: "manyToManyRelationship",
-      icon: "mdi-account",
-      sizing: 6,
-      tooltip: "The NPC(s) this schedule entry belongs to.",
-      relationshipSettings: {
-        connectedObjectType: "characters",
-        connectedField: "npcSchedule"
-      }
-    },
-    {
-      id: "dayOfWeek",
-      name: "Day of Week",
+      id: "mechanicType",
+      name: "Type",
       type: "singleSelect",
-      icon: "mdi-calendar-week",
-      sizing: 3,
-      predefinedSelectValues: [
-        "Every Day",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-        "Weekdays",
-        "Weekends",
-        "Other"
-      ]
+      sizing: 6,
+      predefinedSelectValues: ["Combat Mechanic", "Movement Ability", "Magic Ability", "Passive", "Active", "Ultimate", "System Rule", "UI/HUD Element"]
     },
     {
-      id: "timeSlot",
-      name: "Time of Day",
+      id: "magicClass",
+      name: "Magic Class",
       type: "singleSelect",
-      icon: "mdi-clock-outline",
-      sizing: 3,
-      predefinedSelectValues: [
-        "Morning",
-        "Noon",
-        "Afternoon",
-        "Evening",
-        "Night",
-        "Late Night"
-      ]
-    },
-    {
-      id: "location",
-      name: "Location",
-      type: "manyToManyRelationship",
-      icon: "mdi-map-marker-radius",
       sizing: 6,
-      tooltip: "Where the NPC is during this time slot.",
-      relationshipSettings: {
-        connectedObjectType: "locations",
-        connectedField: "npcSchedules"
-      }
+      predefinedSelectValues: ["None", "Fire", "Water", "Earth", "Air", "Weather", "Nature", "Spirit", "Normal"]
     },
+    { id: "description", name: "Description", type: "wysiwyg", sizing: 12 },
+    { id: "howToUse", name: "How to Use / Controls", type: "wysiwyg", sizing: 12 },
+
+    { id: "breakGameData", name: "Game Data", type: "break", sizing: 12 },
+    { id: "cooldown", name: "Cooldown / Cost", type: "text", sizing: 6 },
+    { id: "unlockCondition", name: "Unlock Condition", type: "text", sizing: 6 },
     {
-      id: "interactingNPCs",
-      name: "Interacting NPCs",
-      type: "manyToManyRelationship",
-      icon: "mdi-account-group",
+      id: "connectedCharacters",
+      name: "Characters Who Use This",
+      type: "manyToNoneRelationship",
       sizing: 6,
-      tooltip: "Other NPCs the NPC interacts with during this time slot.",
-      relationshipSettings: {
-        connectedObjectType: "characters",
-        connectedField: "scheduleInteractions"
-      }
+      relationshipSettings: { connectedObjectType: "characters" }
     },
     {
-      id: "activity",
-      name: "Activity",
-      type: "wysiwyg",
-      icon: "mdi-run",
-      sizing: 12,
-      tooltip: "What the NPC is doing during this time slot."
+      id: "connectedSpells",
+      name: "Related Spells",
+      type: "manyToNoneRelationship",
+      sizing: 6,
+      relationshipSettings: { connectedObjectType: "magic" }
     },
-    {
-      id: "notes",
-      name: "Notes",
-      type: "wysiwyg",
-      icon: "mdi-note-text-outline",
-      sizing: 12,
-      tooltip: "Special conditions or additional notes for this schedule entry."
-    },
-    {
-      id: "breakSpoilers",
-      name: "Secrets/Spoilers/DM notes",
-      type: "break",
-      sizing: 12,
-      isSpoiler: true
-    },
-    {
-      id: "spoilerNotes",
-      name: "Secrets/Spoilers/DM notes",
-      type: "wysiwyg",
-      icon: "fas fa-mask",
-      sizing: 12,
-      isSpoiler: true,
-      tooltip:
-        `This field will not export by default when using the Export document functionality.
-        <br>
-        Instead it needs to be manually included if the user wishes to export it.
-        `
-    }
+
+    { id: "breakNotes", name: "Notes", type: "break", sizing: 12 },
+    { id: "designNotes", name: "Design Notes", type: "wysiwyg", sizing: 12 },
+    { id: "docTemplate", name: "Document Template", type: "documentTemplate", sizing: 12 }
   ]
 }

@@ -1,10 +1,10 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
-export const chaptersBlueprint: I_Blueprint = {
-  _id: "chapters",
-  order: 50,
-  namePlural: "Chapters & Acts",
-  nameSingular: "Chapter/Act",
-  icon: "mdi-file-outline",
+export const cutscenesBlueprint: I_Blueprint = {
+  _id: "cutscenes",
+  order: 47,
+  nameSingular: "Cutscene/Scene",
+  namePlural: "Cutscenes & Scenes",
+  icon: "mdi-movie-open-outline",
   category: "Story",
   extraFields: [
     {
@@ -17,7 +17,7 @@ export const chaptersBlueprint: I_Blueprint = {
       id: "name",
       name: "Name",
       type: "text",
-      icon: "mdi-file-outline",
+      icon: "mdi-movie-open-outline",
       sizing: 3
     },
     {
@@ -31,7 +31,7 @@ export const chaptersBlueprint: I_Blueprint = {
         `,
       sizing: 3,
       relationshipSettings: {
-        connectedObjectType: "chapters"
+        connectedObjectType: "cutscenes"
       }
     },
     {
@@ -134,29 +134,6 @@ export const chaptersBlueprint: I_Blueprint = {
       sizing: 8
     },
     {
-      id: "docTemplate",
-      name: "Document Template",
-      type: "documentTemplate",
-      icon: "mdi-script-text-outline",
-      tooltip:
-        `
-        Document templates are used to determine which fields will the current
-        <br>
-        document show both in view and edit mode.
-        <br>
-        Due to current technical limitations, new templates can be added and existing can
-        <br>
-        be edited/deleted only from the "Export project/document" popup.
-        <br>
-        Please also note that the updates to the template need a document tab reload.
-        <br>
-        This can be achieved either by closing an opening the current tab or switching
-        <br>
-        to another one and then back to this one.
-        `,
-      sizing: 4
-    },
-    {
       id: "extraClasses",
       name: "Extra HTML classes",
       type: "text",
@@ -175,68 +152,52 @@ export const chaptersBlueprint: I_Blueprint = {
       icon: "mdi-book-plus",
       sizing: 12
     },
+
+    { id: "breakSceneInfo", name: "Scene Information", type: "break", sizing: 12 },
     {
-      id: "categoryDescription",
-      name: "Category description",
-      type: "wysiwyg",
-      icon: "mdi-folder-edit-outline",
-      sizing: 12
+      id: "sceneType",
+      name: "Scene Type",
+      type: "singleSelect",
+      sizing: 6,
+      predefinedSelectValues: ["Cutscene", "Gameplay Scene", "Dialogue Scene", "Boss Encounter", "Tutorial", "Transition", "Flashback", "Dream Sequence"]
+    },
+    { id: "actChapter", name: "Act / Chapter", type: "text", sizing: 6 },
+    {
+      id: "sceneLocation",
+      name: "Location",
+      type: "singleToNoneRelationship",
+      sizing: 6,
+      relationshipSettings: { connectedObjectType: "locations" }
     },
     {
-      id: "breakBasic",
-      name: "Basic information",
-      type: "break",
-      sizing: 12
+      id: "sceneCharacters",
+      name: "Characters Present",
+      type: "manyToNoneRelationship",
+      sizing: 6,
+      relationshipSettings: { connectedObjectType: "characters" }
+    },
+    { id: "synopsis", name: "Synopsis", type: "text", sizing: 12 },
+    { id: "screenplay", name: "Screenplay / Script", type: "wysiwyg", sizing: 12 },
+
+    { id: "breakGameContext", name: "Game Context", type: "break", sizing: 12 },
+    { id: "triggerCondition", name: "Trigger Condition", type: "text", sizing: 6 },
+    {
+      id: "playerControl",
+      name: "Player Control",
+      type: "singleSelect",
+      sizing: 6,
+      predefinedSelectValues: ["Full control", "No control", "Limited control", "QTE"]
     },
     {
-      id: "pairedConnectedNotes",
-      name: "Connected to Lore notes/Other notes",
-      type: "manyToManyRelationship",
-      icon: "mdi-script-text-outline",
-      sizing: 12,
-      relationshipSettings: {
-        connectedObjectType: "loreNotes",
-        connectedField: "pairedConnectedChapters"
-      }
+      id: "connectedStoryBeats",
+      name: "Connected Story Beats",
+      type: "manyToNoneRelationship",
+      sizing: 6,
+      relationshipSettings: { connectedObjectType: "storyBeats" }
     },
-    {
-      id: "storyBeats",
-      name: "Story Beats",
-      type: "manyToManyRelationship",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12,
-      tooltip: "Key narrative moments that make up this chapter.",
-      relationshipSettings: {
-        connectedObjectType: "storyBeats",
-        connectedField: "chapter"
-      }
-    },
-    {
-      id: "content",
-      name: "Chapter content",
-      type: "wysiwyg",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12
-    },
-    {
-      id: "breakSpoilers",
-      name: "Secrets/Spoilers/DM notes",
-      type: "break",
-      sizing: 12,
-      isSpoiler: true
-    },
-    {
-      id: "spoilerNotes",
-      name: "Secrets/Spoilers/DM notes",
-      type: "wysiwyg",
-      icon: "fas fa-mask",
-      sizing: 12,
-      isSpoiler: true,
-      tooltip:
-        `This field will not export by default when using the Export document functionality.
-        <br>
-        Instead it needs to be manually included if the user wishes to export it.
-        `
-    }
+
+    { id: "breakNotes", name: "Notes", type: "break", sizing: 12 },
+    { id: "productionNotes", name: "Production Notes", type: "wysiwyg", sizing: 12 },
+    { id: "docTemplate", name: "Document Template", type: "documentTemplate", sizing: 12 }
   ]
 }

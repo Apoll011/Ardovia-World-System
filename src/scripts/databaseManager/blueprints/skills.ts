@@ -2,11 +2,11 @@ import { RPGSystemsStats } from "./../extraFieldLists/RPGSystemsStats"
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const skillsBlueprint: I_Blueprint = {
   _id: "skills",
-  order: 180,
-  namePlural: "Skills/Spells/Other",
-  nameSingular: "Skill/Spell/Other",
+  order: 48,
+  namePlural: "Skills & Talents",
+  nameSingular: "Skill/Talent",
   icon: "mdi-sword-cross",
-  category: "Details",
+  category: "Gameplay",
   extraFields: [
     {
       id: "breakDocumentSettings",

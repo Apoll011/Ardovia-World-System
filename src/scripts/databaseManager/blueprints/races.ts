@@ -2,9 +2,9 @@ import { RPGSystemsStats } from "./../extraFieldLists/RPGSystemsStats"
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const racesBlueprint: I_Blueprint = {
   _id: "races",
-  order: 340,
-  namePlural: "Species/Races/Flora/Fauna",
-  nameSingular: "Species/Race/Flora/Fauna",
+  order: 49,
+  namePlural: "Races & Species",
+  nameSingular: "Race/Species",
   icon: "fas fa-dragon",
   category: "World",
   extraFields: [

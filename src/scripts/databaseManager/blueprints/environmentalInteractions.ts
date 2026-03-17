@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const environmentalInteractionsBlueprint: I_Blueprint = {
   _id: "environmentalInteractions",
-  order: 390,
+  order: 45,
   namePlural: "Environmental Interactions",
   nameSingular: "Environmental Interaction",
   icon: "mdi-puzzle-outline",
-  category: "World",
+  category: "Gameplay",
   extraFields: [
     {
       id: "breakDocumentSettings",

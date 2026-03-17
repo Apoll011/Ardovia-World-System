@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const storyBeatsBlueprint: I_Blueprint = {
   _id: "storyBeats",
-  order: 455,
+  order: 49,
   namePlural: "Story Beats",
   nameSingular: "Story Beat",
   icon: "mdi-book-open-page-variant-outline",
-  category: "Story/Lore",
+  category: "Story",
   extraFields: [
     {
       id: "breakDocumentSettings",

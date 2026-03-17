@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const loreNotesBlueprint: I_Blueprint = {
   _id: "loreNotes",
-  order: 440,
-  namePlural: "Lore notes/Other notes",
-  nameSingular: "Lore note/Other note",
+  order: 48,
+  namePlural: "Lore Notes & Other Notes",
+  nameSingular: "Lore Note",
   icon: "mdi-script-text-outline",
-  category: "Story/Lore",
+  category: "Story",
   extraFields: [
     {
       id: "breakDocumentSettings",

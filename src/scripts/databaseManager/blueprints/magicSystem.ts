@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
-export const chaptersBlueprint: I_Blueprint = {
-  _id: "chapters",
+export const magicSystemBlueprint: I_Blueprint = {
+  _id: "magicSystem",
   order: 50,
-  namePlural: "Chapters & Acts",
-  nameSingular: "Chapter/Act",
-  icon: "mdi-file-outline",
-  category: "Story",
+  nameSingular: "Magic System Entry",
+  namePlural: "Magic System",
+  icon: "mdi-auto-fix",
+  category: "Gameplay",
   extraFields: [
     {
       id: "breakDocumentSettings",
@@ -17,7 +17,7 @@ export const chaptersBlueprint: I_Blueprint = {
       id: "name",
       name: "Name",
       type: "text",
-      icon: "mdi-file-outline",
+      icon: "mdi-auto-fix",
       sizing: 3
     },
     {
@@ -31,7 +31,7 @@ export const chaptersBlueprint: I_Blueprint = {
         `,
       sizing: 3,
       relationshipSettings: {
-        connectedObjectType: "chapters"
+        connectedObjectType: "magicSystem"
       }
     },
     {
@@ -134,29 +134,6 @@ export const chaptersBlueprint: I_Blueprint = {
       sizing: 8
     },
     {
-      id: "docTemplate",
-      name: "Document Template",
-      type: "documentTemplate",
-      icon: "mdi-script-text-outline",
-      tooltip:
-        `
-        Document templates are used to determine which fields will the current
-        <br>
-        document show both in view and edit mode.
-        <br>
-        Due to current technical limitations, new templates can be added and existing can
-        <br>
-        be edited/deleted only from the "Export project/document" popup.
-        <br>
-        Please also note that the updates to the template need a document tab reload.
-        <br>
-        This can be achieved either by closing an opening the current tab or switching
-        <br>
-        to another one and then back to this one.
-        `,
-      sizing: 4
-    },
-    {
       id: "extraClasses",
       name: "Extra HTML classes",
       type: "text",
@@ -175,68 +152,38 @@ export const chaptersBlueprint: I_Blueprint = {
       icon: "mdi-book-plus",
       sizing: 12
     },
+
+    { id: "breakClassInfo", name: "Magic Class Information", type: "break", sizing: 12 },
     {
-      id: "categoryDescription",
-      name: "Category description",
-      type: "wysiwyg",
-      icon: "mdi-folder-edit-outline",
-      sizing: 12
+      id: "magicClass",
+      name: "Magic Class",
+      type: "singleSelect",
+      sizing: 6,
+      predefinedSelectValues: ["Fire", "Water", "Earth", "Air", "Weather", "Nature", "Spirit", "Normal"]
+    },
+    { id: "associatedElement", name: "Associated Element", type: "text", sizing: 6 },
+    { id: "classDescription", name: "Class Description", type: "wysiwyg", sizing: 12 },
+    { id: "capabilities", name: "Capabilities", type: "wysiwyg", sizing: 12 },
+    { id: "limitations", name: "Limitations", type: "wysiwyg", sizing: 12 },
+
+    { id: "breakRelations", name: "Relationships", type: "break", sizing: 12 },
+    {
+      id: "connectedSpells",
+      name: "Spells of This Class",
+      type: "manyToNoneRelationship",
+      sizing: 6,
+      relationshipSettings: { connectedObjectType: "magic" }
     },
     {
-      id: "breakBasic",
-      name: "Basic information",
-      type: "break",
-      sizing: 12
+      id: "knownUsers",
+      name: "Known Users",
+      type: "manyToNoneRelationship",
+      sizing: 6,
+      relationshipSettings: { connectedObjectType: "characters" }
     },
-    {
-      id: "pairedConnectedNotes",
-      name: "Connected to Lore notes/Other notes",
-      type: "manyToManyRelationship",
-      icon: "mdi-script-text-outline",
-      sizing: 12,
-      relationshipSettings: {
-        connectedObjectType: "loreNotes",
-        connectedField: "pairedConnectedChapters"
-      }
-    },
-    {
-      id: "storyBeats",
-      name: "Story Beats",
-      type: "manyToManyRelationship",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12,
-      tooltip: "Key narrative moments that make up this chapter.",
-      relationshipSettings: {
-        connectedObjectType: "storyBeats",
-        connectedField: "chapter"
-      }
-    },
-    {
-      id: "content",
-      name: "Chapter content",
-      type: "wysiwyg",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12
-    },
-    {
-      id: "breakSpoilers",
-      name: "Secrets/Spoilers/DM notes",
-      type: "break",
-      sizing: 12,
-      isSpoiler: true
-    },
-    {
-      id: "spoilerNotes",
-      name: "Secrets/Spoilers/DM notes",
-      type: "wysiwyg",
-      icon: "fas fa-mask",
-      sizing: 12,
-      isSpoiler: true,
-      tooltip:
-        `This field will not export by default when using the Export document functionality.
-        <br>
-        Instead it needs to be manually included if the user wishes to export it.
-        `
-    }
+
+    { id: "breakNotes", name: "Notes", type: "break", sizing: 12 },
+    { id: "loreNotes", name: "Lore Notes", type: "wysiwyg", sizing: 12 },
+    { id: "docTemplate", name: "Document Template", type: "documentTemplate", sizing: 12 }
   ]
 }

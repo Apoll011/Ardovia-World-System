@@ -1,9 +1,9 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const cultureBlueprint: I_Blueprint = {
   _id: "culture",
-  order: 320,
-  namePlural: "Cultures/Arts",
-  nameSingular: "Culture/Art",
+  order: 45,
+  namePlural: "Culture & Society",
+  nameSingular: "Culture",
   icon: "fas fa-archway",
   category: "World",
   extraFields: [

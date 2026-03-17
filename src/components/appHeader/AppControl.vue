@@ -318,6 +318,23 @@
                     </q-item-section>
                   </q-item>
 
+                  <q-separator dark />
+
+                  <q-item
+                    v-close-popup
+                    clickable
+                    active
+                    active-class="bg-gunmetal-light text-cultured"
+                    class="noHigh"
+                    @click="customCssEditorAssignUID"
+                    :disable="!projectExists"
+                  >
+                    <q-item-section>Custom CSS editor</q-item-section>
+                    <q-item-section avatar>
+                      <q-icon name="mdi-language-css3" />
+                    </q-item-section>
+                  </q-item>
+
                 </q-list>
               </q-menu>
             </q-item>

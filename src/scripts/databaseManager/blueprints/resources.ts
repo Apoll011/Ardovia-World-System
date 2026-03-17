@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const resourcesBlueprint: I_Blueprint = {
   _id: "resources",
-  order: 140,
-  namePlural: "Resources/Materials",
+  order: 44,
+  namePlural: "Resources & Materials",
   nameSingular: "Resource/Material",
   icon: "mdi-gold",
-  category: "Details",
+  category: "World",
   extraFields: [
     {
       id: "breakDocumentSettings",

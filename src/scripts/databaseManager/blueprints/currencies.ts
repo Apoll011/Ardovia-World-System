@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const currenciesBlueprint: I_Blueprint = {
   _id: "currencies",
-  order: 8,
+  order: 43,
   namePlural: "Currencies",
   nameSingular: "Currency",
   icon: "fas fa-coins",
-  category: "Details",
+  category: "World",
   extraFields: [
     {
       id: "pairedItems",

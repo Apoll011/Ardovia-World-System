@@ -34,6 +34,10 @@ export default class ProjectManagementLayout extends BaseClass {
     const currentProjectName = await retrieveCurrentProjectName()
 
     this.SSET_setProjectName(currentProjectName)
+
+    if (currentProjectName.length > 0) {
+      this.$router.replace({ path: "/project" }).catch(() => {})
+    }
   }
 }
 </script>

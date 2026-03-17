@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const magicBlueprint: I_Blueprint = {
   _id: "magic",
-  order: 250,
-  namePlural: "Schools of Magic/Magical groups",
-  nameSingular: "School of Magic/Magical group",
+  order: 49,
+  namePlural: "Spells & Magic",
+  nameSingular: "Spell/Magic",
   icon: "fas fa-hat-wizard",
-  category: "Groups/Teachings",
+  category: "Gameplay",
   extraFields: [
     {
       id: "leaders",
