@@ -764,6 +764,80 @@ export const magicBlueprint: I_Blueprint = {
       }
     },
     {
+      id: "breakGameplay",
+      name: "Gameplay - Spells & Interactions",
+      type: "break",
+      sizing: 12
+    },
+    {
+      id: "spellsInClass",
+      name: "Spells in this Magic Class",
+      type: "manyToManyRelationship",
+      icon: "fas fa-magic",
+      sizing: 6,
+      tooltip: "Individual spells that belong to this magic class.",
+      relationshipSettings: {
+        connectedObjectType: "spells",
+        connectedField: "magicClass"
+      }
+    },
+    {
+      id: "classCharacters",
+      name: "Characters with this Magic Class",
+      type: "manyToManyRelationship",
+      icon: "mdi-account",
+      sizing: 6,
+      tooltip: "Characters who have learned or wield this magic class.",
+      relationshipSettings: {
+        connectedObjectType: "characters",
+        connectedField: "magicClasses"
+      }
+    },
+    {
+      id: "environmentalUses",
+      name: "Environmental & Puzzle Uses",
+      type: "wysiwyg",
+      icon: "mdi-puzzle-outline",
+      sizing: 12,
+      tooltip: "How spells from this magic class can interact with the environment or solve puzzles."
+    },
+    {
+      id: "usedInInteractions",
+      name: "Used in Environmental Interactions",
+      type: "manyToManyRelationship",
+      icon: "mdi-puzzle-outline",
+      sizing: 6,
+      tooltip: "Environmental interactions that require this magic class.",
+      relationshipSettings: {
+        connectedObjectType: "environmentalInteractions",
+        connectedField: "requiredMagicClass"
+      }
+    },
+    {
+      id: "magicAffinity",
+      name: "Cultural Affinity",
+      type: "manyToManyRelationship",
+      icon: "fas fa-archway",
+      sizing: 6,
+      tooltip: "Cultures or groups that have a natural affinity for this magic class.",
+      relationshipSettings: {
+        connectedObjectType: "culture",
+        connectedField: "affinityMagicClasses"
+      }
+    },
+    {
+      id: "requiredForQuests",
+      name: "Required for Quests/Events",
+      type: "manyToManyRelationship",
+      icon: "mdi-calendar-text",
+      sizing: 6,
+      tooltip: "Quests or events that require this magic class to complete.",
+      relationshipSettings: {
+        connectedObjectType: "events",
+        connectedField: "requiredMagic"
+      }
+    },
+    {
       id: "breakSpoilers",
       name: "Secrets/Spoilers/DM notes",
       type: "break",

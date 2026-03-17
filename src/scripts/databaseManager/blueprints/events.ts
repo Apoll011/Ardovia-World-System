@@ -460,6 +460,144 @@ export const eventsBlueprint: I_Blueprint = {
       }
     },
     {
+      id: "breakQuestInfo",
+      name: "Quest/Encounter Details",
+      type: "break",
+      sizing: 12
+    },
+    {
+      id: "questCategory",
+      name: "Quest/Encounter Category",
+      type: "singleSelect",
+      icon: "mdi-flag-variant-outline",
+      sizing: 4,
+      tooltip: "Categorizes this event as a quest, random encounter, story moment, or side objective.",
+      predefinedSelectValues: [
+        "Main Quest",
+        "Side Quest",
+        "Encounter",
+        "Story Beat",
+        "Side Objective",
+        "Other"
+      ]
+    },
+    {
+      id: "isMainQuest",
+      name: "Is Main Quest",
+      type: "switch",
+      icon: "mdi-star-circle-outline",
+      sizing: 2,
+      tooltip: "Toggle on if this event is part of the main story quest line."
+    },
+    {
+      id: "questGiver",
+      name: "Quest Giver",
+      type: "manyToManyRelationship",
+      icon: "mdi-account",
+      sizing: 6,
+      tooltip: "NPC(s) who offer or initiate this quest.",
+      relationshipSettings: {
+        connectedObjectType: "characters",
+        connectedField: "givenQuests"
+      }
+    },
+    {
+      id: "relatedLocations",
+      name: "Quest Locations",
+      type: "manyToManyRelationship",
+      icon: "mdi-map-marker-radius",
+      sizing: 6,
+      tooltip: "Locations where this quest or encounter takes place.",
+      relationshipSettings: {
+        connectedObjectType: "locations",
+        connectedField: "questsAvailable"
+      }
+    },
+    {
+      id: "requiredMagic",
+      name: "Required Magic/Spells",
+      type: "manyToManyRelationship",
+      icon: "fas fa-hat-wizard",
+      sizing: 6,
+      tooltip: "Magic classes or spells required to complete this quest.",
+      relationshipSettings: {
+        connectedObjectType: "magic",
+        connectedField: "requiredForQuests"
+      }
+    },
+    {
+      id: "rewardedSpells",
+      name: "Spells Rewarded",
+      type: "manyToManyRelationship",
+      icon: "fas fa-magic",
+      sizing: 6,
+      tooltip: "Spells unlocked or rewarded upon completing this quest.",
+      relationshipSettings: {
+        connectedObjectType: "spells",
+        connectedField: "relatedQuest"
+      }
+    },
+    {
+      id: "relatedEnemyTypes",
+      name: "Enemy Types",
+      type: "manyToManyRelationship",
+      icon: "mdi-skull",
+      sizing: 6,
+      tooltip: "Enemy types that appear in this quest or encounter.",
+      relationshipSettings: {
+        connectedObjectType: "enemyTypes",
+        connectedField: "relatedQuest"
+      }
+    },
+    {
+      id: "environmentalInteractions",
+      name: "Environmental Interactions",
+      type: "manyToManyRelationship",
+      icon: "mdi-puzzle-outline",
+      sizing: 6,
+      tooltip: "Puzzles or interactions that are part of this quest.",
+      relationshipSettings: {
+        connectedObjectType: "environmentalInteractions",
+        connectedField: "relatedQuest"
+      }
+    },
+    {
+      id: "relatedStoryBeats",
+      name: "Related Story Beats",
+      type: "manyToManyRelationship",
+      icon: "mdi-book-open-page-variant-outline",
+      sizing: 6,
+      tooltip: "Story beats that are associated with this quest.",
+      relationshipSettings: {
+        connectedObjectType: "storyBeats",
+        connectedField: "relatedQuests"
+      }
+    },
+    {
+      id: "objectives",
+      name: "Objectives",
+      type: "wysiwyg",
+      icon: "mdi-format-list-checks",
+      sizing: 12,
+      tooltip: "The step-by-step goals the player needs to complete for this quest."
+    },
+    {
+      id: "questRewards",
+      name: "Rewards",
+      type: "wysiwyg",
+      icon: "mdi-treasure-chest",
+      sizing: 12,
+      tooltip: "Gold, items, spells, or story progression unlocked by completing this quest."
+    },
+    {
+      id: "consequences",
+      name: "Consequences",
+      type: "wysiwyg",
+      icon: "mdi-arrow-decision-outline",
+      sizing: 12,
+      tooltip: "What changes in the world or story if the player succeeds or fails this quest."
+    },
+    {
       id: "breakSpoilers",
       name: "Secrets/Spoilers/DM notes",
       type: "break",

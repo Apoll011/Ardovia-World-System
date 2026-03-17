@@ -709,6 +709,88 @@ export const locationsBlueprint: I_Blueprint = {
       }
     },
     {
+      id: "breakGameplay",
+      name: "Gameplay",
+      type: "break",
+      sizing: 12
+    },
+    {
+      id: "isSafeZone",
+      name: "Is a Safe Zone",
+      type: "switch",
+      icon: "mdi-shield-home-outline",
+      sizing: 3,
+      tooltip: "Toggle on if the player can rest, save, or fast travel from this location."
+    },
+    {
+      id: "atmosphere",
+      name: "Atmosphere & Tone",
+      type: "wysiwyg",
+      icon: "mdi-weather-fog",
+      sizing: 12,
+      tooltip: "How does this location feel? Describe the mood, ambiance, and sensory details."
+    },
+    {
+      id: "enemyEncounters",
+      name: "Enemy Encounters",
+      type: "manyToManyRelationship",
+      icon: "mdi-skull",
+      sizing: 6,
+      tooltip: "Enemy types that can be encountered in this location.",
+      relationshipSettings: {
+        connectedObjectType: "enemyTypes",
+        connectedField: "relatedLocations"
+      }
+    },
+    {
+      id: "questsAvailable",
+      name: "Available Quests/Events",
+      type: "manyToManyRelationship",
+      icon: "mdi-calendar-text",
+      sizing: 6,
+      tooltip: "Quests or events that are available or take place at this location.",
+      relationshipSettings: {
+        connectedObjectType: "events",
+        connectedField: "relatedLocations"
+      }
+    },
+    {
+      id: "environmentalInteractions",
+      name: "Environmental Interactions & Puzzles",
+      type: "manyToManyRelationship",
+      icon: "mdi-puzzle-outline",
+      sizing: 6,
+      tooltip: "Interactive objects, puzzles, and environmental interactions found here.",
+      relationshipSettings: {
+        connectedObjectType: "environmentalInteractions",
+        connectedField: "location"
+      }
+    },
+    {
+      id: "npcSchedules",
+      name: "NPC Schedules at this Location",
+      type: "manyToManyRelationship",
+      icon: "mdi-calendar-clock",
+      sizing: 6,
+      tooltip: "NPC schedule entries placing characters at this location.",
+      relationshipSettings: {
+        connectedObjectType: "npcSchedules",
+        connectedField: "location"
+      }
+    },
+    {
+      id: "storyBeats",
+      name: "Story Beats at this Location",
+      type: "manyToManyRelationship",
+      icon: "mdi-book-open-page-variant-outline",
+      sizing: 6,
+      tooltip: "Story beats that take place at this location.",
+      relationshipSettings: {
+        connectedObjectType: "storyBeats",
+        connectedField: "location"
+      }
+    },
+    {
       id: "breakSpoilers",
       name: "Secrets/Spoilers/DM notes",
       type: "break",

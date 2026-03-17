@@ -1736,6 +1736,90 @@ export const charactersBlueprint: I_Blueprint = {
       }
     },
     {
+      id: "breakGameplay",
+      name: "Gameplay - Magic & Spells",
+      type: "break",
+      sizing: 12
+    },
+    {
+      id: "magicClasses",
+      name: "Known Magic Classes",
+      type: "manyToManyRelationship",
+      icon: "fas fa-hat-wizard",
+      sizing: 6,
+      tooltip: "Magic classes this character has learned or is affiliated with.",
+      relationshipSettings: {
+        connectedObjectType: "magic",
+        connectedField: "classCharacters"
+      }
+    },
+    {
+      id: "taughtSpells",
+      name: "Spells This Character Teaches",
+      type: "manyToManyRelationship",
+      icon: "fas fa-magic",
+      sizing: 6,
+      tooltip: "Spells that this character can teach the player.",
+      relationshipSettings: {
+        connectedObjectType: "spells",
+        connectedField: "teachingNPC"
+      }
+    },
+    {
+      id: "breakNPCSchedule",
+      name: "Gameplay - Schedule & Story",
+      type: "break",
+      sizing: 12
+    },
+    {
+      id: "npcSchedule",
+      name: "NPC Daily Schedule",
+      type: "manyToManyRelationship",
+      icon: "mdi-calendar-clock",
+      sizing: 6,
+      tooltip: "Daily routine entries for this character - where they are and when.",
+      relationshipSettings: {
+        connectedObjectType: "npcSchedules",
+        connectedField: "npc"
+      }
+    },
+    {
+      id: "characterArc",
+      name: "Character Arc (Story Beats)",
+      type: "manyToManyRelationship",
+      icon: "mdi-book-open-page-variant-outline",
+      sizing: 6,
+      tooltip: "Story beats in which this character plays a role.",
+      relationshipSettings: {
+        connectedObjectType: "storyBeats",
+        connectedField: "npcsInvolved"
+      }
+    },
+    {
+      id: "scheduleInteractions",
+      name: "Scheduled Interactions with NPCs",
+      type: "manyToManyRelationship",
+      icon: "mdi-account-group",
+      sizing: 6,
+      tooltip: "Other NPCs this character meets during their daily schedule.",
+      relationshipSettings: {
+        connectedObjectType: "characters",
+        connectedField: "scheduleInteractions"
+      }
+    },
+    {
+      id: "givenQuests",
+      name: "Quests Given by this Character",
+      type: "manyToManyRelationship",
+      icon: "mdi-calendar-text",
+      sizing: 6,
+      tooltip: "Quests or events that this character offers to the player.",
+      relationshipSettings: {
+        connectedObjectType: "events",
+        connectedField: "questGiver"
+      }
+    },
+    {
       id: "breakSpoilers",
       name: "Secrets/Spoilers/DM notes",
       type: "break",

@@ -453,6 +453,18 @@ export const cultureBlueprint: I_Blueprint = {
       }
     },
     {
+      id: "affinityMagicClasses",
+      name: "Affinity Magic Classes",
+      type: "manyToManyRelationship",
+      icon: "fas fa-hat-wizard",
+      sizing: 6,
+      tooltip: "Magic classes that this culture has a natural affinity or tradition for.",
+      relationshipSettings: {
+        connectedObjectType: "magic",
+        connectedField: "magicAffinity"
+      }
+    },
+    {
       id: "breakSpoilers",
       name: "Secrets/Spoilers/DM notes",
       type: "break",

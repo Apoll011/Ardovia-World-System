@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
-export const chaptersBlueprint: I_Blueprint = {
-  _id: "chapters",
-  order: 450,
-  namePlural: "Chapters",
-  nameSingular: "Chapter",
-  icon: "mdi-file-outline",
-  category: "Story/Lore",
+export const npcSchedulesBlueprint: I_Blueprint = {
+  _id: "npcSchedules",
+  order: 395,
+  namePlural: "NPC Schedules",
+  nameSingular: "NPC Schedule",
+  icon: "mdi-calendar-clock",
+  category: "World",
   extraFields: [
     {
       id: "breakDocumentSettings",
@@ -17,7 +17,7 @@ export const chaptersBlueprint: I_Blueprint = {
       id: "name",
       name: "Name",
       type: "text",
-      icon: "mdi-file-outline",
+      icon: "mdi-calendar-clock",
       sizing: 3
     },
     {
@@ -27,11 +27,10 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This field is used to build up custom hierarchical tree structure in the main list of items in the left side of the app.
         <br> You can use this for an infinite amount of sub-levels to the hierarchical structure.
-        <br> An example would be multiple sub-groups (provinces) of Roman Empire belonging under the main political group called "Roman Empire".
         `,
       sizing: 3,
       relationshipSettings: {
-        connectedObjectType: "chapters"
+        connectedObjectType: "npcSchedules"
       }
     },
     {
@@ -76,8 +75,7 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to minor document mode.
         <br>
-        A document with minor document mode toggled on will not show in any other relationship searches.<br>
-        The idea behind this setting is to allow for creation of documents that will not clutter the search, but could be theoretically relevant in some very specific cases to the story (eg: distant relatives of a character).
+        A document with minor document mode toggled on will not show in any other relationship searches.
         `,
       sizing: 3
     },
@@ -89,7 +87,7 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to dead/gone/destroyed mode.
         <br>
-        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it - showing that it is no longer a part of the current timeline.
+        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it.
         `,
       sizing: 3
     },
@@ -113,7 +111,6 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `In case the default sorting via alphabet in the hierarchical tree on the left is inadequate for your needs, this field allows you to fill custom numbers to order by that get placed before the default alphabetical order.
         <br>It is heavily suggested to "pad-out" the custom order numbers by writing for example 100 (or least 10) instead of 1.
-        <br>This allows for extra "padding" between the items in case a new one needs to be added in the middle without needing to redo the custom order on all documents.
         `,
       sizing: 3
     },
@@ -126,10 +123,6 @@ export const chaptersBlueprint: I_Blueprint = {
         `Tags are used to sort the same (or even different) document types into a custom groups based on your needs.
         <br>
         A document may have any number of tags, but each tag can be present only once.
-        <br>
-        This limitation also applies to any variation of lower or upper case iterations of the same tag.
-        <br>
-        Example: A tag called "Player Party" will be considered the same tag as "player party", "PlAyER PaRtY" or anything similar.
         `,
       sizing: 8
     },
@@ -143,16 +136,6 @@ export const chaptersBlueprint: I_Blueprint = {
         Document templates are used to determine which fields will the current
         <br>
         document show both in view and edit mode.
-        <br>
-        Due to current technical limitations, new templates can be added and existing can
-        <br>
-        be edited/deleted only from the "Export project/document" popup.
-        <br>
-        Please also note that the updates to the template need a document tab reload.
-        <br>
-        This can be achieved either by closing an opening the current tab or switching
-        <br>
-        to another one and then back to this one.
         `,
       sizing: 4
     },
@@ -169,13 +152,6 @@ export const chaptersBlueprint: I_Blueprint = {
       sizing: 12
     },
     {
-      id: "otherNames",
-      name: "Other Names & Epithets",
-      type: "list",
-      icon: "mdi-book-plus",
-      sizing: 12
-    },
-    {
       id: "categoryDescription",
       name: "Category description",
       type: "wysiwyg",
@@ -189,34 +165,91 @@ export const chaptersBlueprint: I_Blueprint = {
       sizing: 12
     },
     {
-      id: "pairedConnectedNotes",
-      name: "Connected to Lore notes/Other notes",
+      id: "npc",
+      name: "NPC",
       type: "manyToManyRelationship",
-      icon: "mdi-script-text-outline",
-      sizing: 12,
+      icon: "mdi-account",
+      sizing: 6,
+      tooltip: "The NPC(s) this schedule entry belongs to.",
       relationshipSettings: {
-        connectedObjectType: "loreNotes",
-        connectedField: "pairedConnectedChapters"
+        connectedObjectType: "characters",
+        connectedField: "npcSchedule"
       }
     },
     {
-      id: "storyBeats",
-      name: "Story Beats",
+      id: "dayOfWeek",
+      name: "Day of Week",
+      type: "singleSelect",
+      icon: "mdi-calendar-week",
+      sizing: 3,
+      predefinedSelectValues: [
+        "Every Day",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+        "Weekdays",
+        "Weekends",
+        "Other"
+      ]
+    },
+    {
+      id: "timeSlot",
+      name: "Time of Day",
+      type: "singleSelect",
+      icon: "mdi-clock-outline",
+      sizing: 3,
+      predefinedSelectValues: [
+        "Morning",
+        "Noon",
+        "Afternoon",
+        "Evening",
+        "Night",
+        "Late Night"
+      ]
+    },
+    {
+      id: "location",
+      name: "Location",
       type: "manyToManyRelationship",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12,
-      tooltip: "Key narrative moments that make up this chapter.",
+      icon: "mdi-map-marker-radius",
+      sizing: 6,
+      tooltip: "Where the NPC is during this time slot.",
       relationshipSettings: {
-        connectedObjectType: "storyBeats",
-        connectedField: "chapter"
+        connectedObjectType: "locations",
+        connectedField: "npcSchedules"
       }
     },
     {
-      id: "content",
-      name: "Chapter content",
+      id: "interactingNPCs",
+      name: "Interacting NPCs",
+      type: "manyToManyRelationship",
+      icon: "mdi-account-group",
+      sizing: 6,
+      tooltip: "Other NPCs the NPC interacts with during this time slot.",
+      relationshipSettings: {
+        connectedObjectType: "characters",
+        connectedField: "scheduleInteractions"
+      }
+    },
+    {
+      id: "activity",
+      name: "Activity",
       type: "wysiwyg",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12
+      icon: "mdi-run",
+      sizing: 12,
+      tooltip: "What the NPC is doing during this time slot."
+    },
+    {
+      id: "notes",
+      name: "Notes",
+      type: "wysiwyg",
+      icon: "mdi-note-text-outline",
+      sizing: 12,
+      tooltip: "Special conditions or additional notes for this schedule entry."
     },
     {
       id: "breakSpoilers",
