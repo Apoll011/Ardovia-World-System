@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
-export const chaptersBlueprint: I_Blueprint = {
-  _id: "chapters",
-  order: 450,
-  namePlural: "Chapters",
-  nameSingular: "Chapter",
-  icon: "mdi-file-outline",
-  category: "Story/Lore",
+export const environmentalInteractionsBlueprint: I_Blueprint = {
+  _id: "environmentalInteractions",
+  order: 390,
+  namePlural: "Environmental Interactions",
+  nameSingular: "Environmental Interaction",
+  icon: "mdi-puzzle-outline",
+  category: "World",
   extraFields: [
     {
       id: "breakDocumentSettings",
@@ -17,7 +17,7 @@ export const chaptersBlueprint: I_Blueprint = {
       id: "name",
       name: "Name",
       type: "text",
-      icon: "mdi-file-outline",
+      icon: "mdi-puzzle-outline",
       sizing: 3
     },
     {
@@ -27,11 +27,10 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This field is used to build up custom hierarchical tree structure in the main list of items in the left side of the app.
         <br> You can use this for an infinite amount of sub-levels to the hierarchical structure.
-        <br> An example would be multiple sub-groups (provinces) of Roman Empire belonging under the main political group called "Roman Empire".
         `,
       sizing: 3,
       relationshipSettings: {
-        connectedObjectType: "chapters"
+        connectedObjectType: "environmentalInteractions"
       }
     },
     {
@@ -76,8 +75,7 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to minor document mode.
         <br>
-        A document with minor document mode toggled on will not show in any other relationship searches.<br>
-        The idea behind this setting is to allow for creation of documents that will not clutter the search, but could be theoretically relevant in some very specific cases to the story (eg: distant relatives of a character).
+        A document with minor document mode toggled on will not show in any other relationship searches.
         `,
       sizing: 3
     },
@@ -89,7 +87,7 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to dead/gone/destroyed mode.
         <br>
-        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it - showing that it is no longer a part of the current timeline.
+        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it.
         `,
       sizing: 3
     },
@@ -113,7 +111,6 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `In case the default sorting via alphabet in the hierarchical tree on the left is inadequate for your needs, this field allows you to fill custom numbers to order by that get placed before the default alphabetical order.
         <br>It is heavily suggested to "pad-out" the custom order numbers by writing for example 100 (or least 10) instead of 1.
-        <br>This allows for extra "padding" between the items in case a new one needs to be added in the middle without needing to redo the custom order on all documents.
         `,
       sizing: 3
     },
@@ -126,10 +123,6 @@ export const chaptersBlueprint: I_Blueprint = {
         `Tags are used to sort the same (or even different) document types into a custom groups based on your needs.
         <br>
         A document may have any number of tags, but each tag can be present only once.
-        <br>
-        This limitation also applies to any variation of lower or upper case iterations of the same tag.
-        <br>
-        Example: A tag called "Player Party" will be considered the same tag as "player party", "PlAyER PaRtY" or anything similar.
         `,
       sizing: 8
     },
@@ -143,16 +136,6 @@ export const chaptersBlueprint: I_Blueprint = {
         Document templates are used to determine which fields will the current
         <br>
         document show both in view and edit mode.
-        <br>
-        Due to current technical limitations, new templates can be added and existing can
-        <br>
-        be edited/deleted only from the "Export project/document" popup.
-        <br>
-        Please also note that the updates to the template need a document tab reload.
-        <br>
-        This can be achieved either by closing an opening the current tab or switching
-        <br>
-        to another one and then back to this one.
         `,
       sizing: 4
     },
@@ -189,34 +172,143 @@ export const chaptersBlueprint: I_Blueprint = {
       sizing: 12
     },
     {
-      id: "pairedConnectedNotes",
-      name: "Connected to Lore notes/Other notes",
+      id: "interactionType",
+      name: "Interaction Type",
+      type: "singleSelect",
+      icon: "mdi-gesture-tap",
+      sizing: 4,
+      predefinedSelectValues: [
+        "Puzzle",
+        "Destructible",
+        "Lever",
+        "Pressure Plate",
+        "Door",
+        "Secret Passage",
+        "Treasure Chest",
+        "Trap",
+        "Other"
+      ]
+    },
+    {
+      id: "difficultyLevel",
+      name: "Difficulty Level",
+      type: "singleSelect",
+      icon: "mdi-gauge",
+      sizing: 4,
+      predefinedSelectValues: [
+        "Easy",
+        "Medium",
+        "Hard",
+        "Legendary"
+      ]
+    },
+    {
+      id: "location",
+      name: "Location",
       type: "manyToManyRelationship",
-      icon: "mdi-script-text-outline",
-      sizing: 12,
+      icon: "mdi-map-marker-radius",
+      sizing: 4,
+      tooltip: "Location(s) where this interaction exists.",
       relationshipSettings: {
-        connectedObjectType: "loreNotes",
-        connectedField: "pairedConnectedChapters"
+        connectedObjectType: "locations",
+        connectedField: "environmentalInteractions"
       }
     },
     {
-      id: "storyBeats",
-      name: "Story Beats",
-      type: "manyToManyRelationship",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12,
-      tooltip: "Key narrative moments that make up this chapter.",
-      relationshipSettings: {
-        connectedObjectType: "storyBeats",
-        connectedField: "chapter"
-      }
-    },
-    {
-      id: "content",
-      name: "Chapter content",
+      id: "description",
+      name: "Description",
       type: "wysiwyg",
       icon: "mdi-book-open-page-variant-outline",
+      sizing: 12,
+      tooltip: "What the player sees and the context of this interaction."
+    },
+    {
+      id: "interactionSequence",
+      name: "Interaction Sequence",
+      type: "wysiwyg",
+      icon: "mdi-format-list-numbered",
+      sizing: 12,
+      tooltip: "Step-by-step guide on how the player interacts with this object."
+    },
+    {
+      id: "breakRequirements",
+      name: "Requirements",
+      type: "break",
       sizing: 12
+    },
+    {
+      id: "requiredItem",
+      name: "Required Item",
+      type: "manyToManyRelationship",
+      icon: "mdi-sword",
+      sizing: 4,
+      tooltip: "Item(s) needed to complete this interaction.",
+      relationshipSettings: {
+        connectedObjectType: "items",
+        connectedField: "usedInInteractions"
+      }
+    },
+    {
+      id: "requiredSpell",
+      name: "Required Spell",
+      type: "manyToManyRelationship",
+      icon: "fas fa-magic",
+      sizing: 4,
+      tooltip: "Spell(s) required to solve or trigger this interaction.",
+      relationshipSettings: {
+        connectedObjectType: "spells",
+        connectedField: "usedInInteractions"
+      }
+    },
+    {
+      id: "requiredMagicClass",
+      name: "Required Magic Class",
+      type: "manyToManyRelationship",
+      icon: "fas fa-hat-wizard",
+      sizing: 4,
+      tooltip: "Magic class(es) needed (e.g. Air Magic for camouflage, Fire Magic for a torch puzzle).",
+      relationshipSettings: {
+        connectedObjectType: "magic",
+        connectedField: "usedInInteractions"
+      }
+    },
+    {
+      id: "breakOutcome",
+      name: "Outcome",
+      type: "break",
+      sizing: 12
+    },
+    {
+      id: "rewards",
+      name: "Rewards",
+      type: "wysiwyg",
+      icon: "mdi-treasure-chest",
+      sizing: 12,
+      tooltip: "What the player receives for solving or completing this interaction."
+    },
+    {
+      id: "relatedQuest",
+      name: "Related Quest/Event",
+      type: "manyToManyRelationship",
+      icon: "mdi-calendar-text",
+      sizing: 6,
+      tooltip: "Quest(s) or event(s) tied to this interaction.",
+      relationshipSettings: {
+        connectedObjectType: "events",
+        connectedField: "environmentalInteractions"
+      }
+    },
+    {
+      id: "relatedStoryBeat",
+      name: "Related Story Beat",
+      type: "manyToManyRelationship",
+      icon: "mdi-book-open-page-variant-outline",
+      sizing: 6,
+      tooltip: "Story beat(s) associated with this interaction.",
+      relationshipSettings: {
+        connectedObjectType: "storyBeats",
+        connectedField: "environmentalInteractions"
+      }
     },
     {
       id: "breakSpoilers",
@@ -224,6 +316,19 @@ export const chaptersBlueprint: I_Blueprint = {
       type: "break",
       sizing: 12,
       isSpoiler: true
+    },
+    {
+      id: "puzzleSolution",
+      name: "Puzzle Solution (Designer Reference)",
+      type: "wysiwyg",
+      icon: "mdi-key-variant",
+      sizing: 12,
+      isSpoiler: true,
+      tooltip:
+        `Full solution details for designer reference only.
+        <br>
+        This field will not export by default when using the Export document functionality.
+        `
     },
     {
       id: "spoilerNotes",

@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
-export const chaptersBlueprint: I_Blueprint = {
-  _id: "chapters",
-  order: 450,
-  namePlural: "Chapters",
-  nameSingular: "Chapter",
-  icon: "mdi-file-outline",
-  category: "Story/Lore",
+export const spellsBlueprint: I_Blueprint = {
+  _id: "spells",
+  order: 255,
+  namePlural: "Spells/Abilities",
+  nameSingular: "Spell/Ability",
+  icon: "fas fa-magic",
+  category: "Groups/Teachings",
   extraFields: [
     {
       id: "breakDocumentSettings",
@@ -17,7 +17,7 @@ export const chaptersBlueprint: I_Blueprint = {
       id: "name",
       name: "Name",
       type: "text",
-      icon: "mdi-file-outline",
+      icon: "fas fa-magic",
       sizing: 3
     },
     {
@@ -27,11 +27,10 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This field is used to build up custom hierarchical tree structure in the main list of items in the left side of the app.
         <br> You can use this for an infinite amount of sub-levels to the hierarchical structure.
-        <br> An example would be multiple sub-groups (provinces) of Roman Empire belonging under the main political group called "Roman Empire".
         `,
       sizing: 3,
       relationshipSettings: {
-        connectedObjectType: "chapters"
+        connectedObjectType: "spells"
       }
     },
     {
@@ -76,8 +75,7 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to minor document mode.
         <br>
-        A document with minor document mode toggled on will not show in any other relationship searches.<br>
-        The idea behind this setting is to allow for creation of documents that will not clutter the search, but could be theoretically relevant in some very specific cases to the story (eg: distant relatives of a character).
+        A document with minor document mode toggled on will not show in any other relationship searches.
         `,
       sizing: 3
     },
@@ -89,7 +87,7 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to dead/gone/destroyed mode.
         <br>
-        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it - showing that it is no longer a part of the current timeline.
+        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it.
         `,
       sizing: 3
     },
@@ -113,7 +111,6 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `In case the default sorting via alphabet in the hierarchical tree on the left is inadequate for your needs, this field allows you to fill custom numbers to order by that get placed before the default alphabetical order.
         <br>It is heavily suggested to "pad-out" the custom order numbers by writing for example 100 (or least 10) instead of 1.
-        <br>This allows for extra "padding" between the items in case a new one needs to be added in the middle without needing to redo the custom order on all documents.
         `,
       sizing: 3
     },
@@ -126,10 +123,6 @@ export const chaptersBlueprint: I_Blueprint = {
         `Tags are used to sort the same (or even different) document types into a custom groups based on your needs.
         <br>
         A document may have any number of tags, but each tag can be present only once.
-        <br>
-        This limitation also applies to any variation of lower or upper case iterations of the same tag.
-        <br>
-        Example: A tag called "Player Party" will be considered the same tag as "player party", "PlAyER PaRtY" or anything similar.
         `,
       sizing: 8
     },
@@ -143,16 +136,6 @@ export const chaptersBlueprint: I_Blueprint = {
         Document templates are used to determine which fields will the current
         <br>
         document show both in view and edit mode.
-        <br>
-        Due to current technical limitations, new templates can be added and existing can
-        <br>
-        be edited/deleted only from the "Export project/document" popup.
-        <br>
-        Please also note that the updates to the template need a document tab reload.
-        <br>
-        This can be achieved either by closing an opening the current tab or switching
-        <br>
-        to another one and then back to this one.
         `,
       sizing: 4
     },
@@ -189,34 +172,153 @@ export const chaptersBlueprint: I_Blueprint = {
       sizing: 12
     },
     {
-      id: "pairedConnectedNotes",
-      name: "Connected to Lore notes/Other notes",
+      id: "ardovianName",
+      name: "Ardovian Incantation",
+      type: "text",
+      icon: "fas fa-hat-wizard",
+      sizing: 4,
+      tooltip: "The magical incantation used to cast this spell in the Ardovian tongue (e.g. \"Womewt ik by tfe kimw\")."
+    },
+    {
+      id: "magicClass",
+      name: "Magic Class",
       type: "manyToManyRelationship",
-      icon: "mdi-script-text-outline",
-      sizing: 12,
+      icon: "fas fa-hat-wizard",
+      sizing: 4,
+      tooltip: "The magic class(es) this spell belongs to.",
       relationshipSettings: {
-        connectedObjectType: "loreNotes",
-        connectedField: "pairedConnectedChapters"
+        connectedObjectType: "magic",
+        connectedField: "spellsInClass"
       }
     },
     {
-      id: "storyBeats",
-      name: "Story Beats",
-      type: "manyToManyRelationship",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12,
-      tooltip: "Key narrative moments that make up this chapter.",
-      relationshipSettings: {
-        connectedObjectType: "storyBeats",
-        connectedField: "chapter"
-      }
+      id: "rangeType",
+      name: "Range Type",
+      type: "singleSelect",
+      icon: "mdi-arrow-expand-all",
+      sizing: 4,
+      predefinedSelectValues: [
+        "Melee",
+        "Ranged",
+        "Area of Effect",
+        "Self",
+        "Touch",
+        "Other"
+      ]
     },
     {
-      id: "content",
-      name: "Chapter content",
+      id: "manaCost",
+      name: "Mana Cost",
+      type: "number",
+      icon: "mdi-water",
+      sizing: 2,
+      tooltip: "Mana points required to cast this spell."
+    },
+    {
+      id: "cooldownSeconds",
+      name: "Cooldown (seconds)",
+      type: "number",
+      icon: "mdi-timer-outline",
+      sizing: 2,
+      tooltip: "Seconds that must pass before the spell can be cast again."
+    },
+    {
+      id: "damageAmount",
+      name: "Damage",
+      type: "number",
+      icon: "mdi-sword",
+      sizing: 2,
+      tooltip: "Base damage dealt by this spell (leave empty for non-offensive spells)."
+    },
+    {
+      id: "healAmount",
+      name: "Heal Amount",
+      type: "number",
+      icon: "mdi-heart-plus",
+      sizing: 2,
+      tooltip: "Amount healed by this spell (leave empty for non-healing spells)."
+    },
+    {
+      id: "description",
+      name: "Description",
       type: "wysiwyg",
       icon: "mdi-book-open-page-variant-outline",
+      sizing: 12,
+      tooltip: "What the spell does, its visual effect, and any mechanical details."
+    },
+    {
+      id: "unlockCondition",
+      name: "Unlock Condition",
+      type: "wysiwyg",
+      icon: "mdi-lock-open-variant-outline",
+      sizing: 12,
+      tooltip: "How the player learns or acquires this spell."
+    },
+    {
+      id: "breakConnections",
+      name: "Connections",
+      type: "break",
       sizing: 12
+    },
+    {
+      id: "teachingNPC",
+      name: "Teaching NPC",
+      type: "manyToManyRelationship",
+      icon: "mdi-account",
+      sizing: 4,
+      tooltip: "NPC(s) who can teach the player this spell.",
+      relationshipSettings: {
+        connectedObjectType: "characters",
+        connectedField: "taughtSpells"
+      }
+    },
+    {
+      id: "relatedQuest",
+      name: "Related Quest/Event",
+      type: "manyToManyRelationship",
+      icon: "mdi-calendar-text",
+      sizing: 4,
+      tooltip: "Quest(s) or event(s) that teach or reward this spell.",
+      relationshipSettings: {
+        connectedObjectType: "events",
+        connectedField: "rewardedSpells"
+      }
+    },
+    {
+      id: "usedInInteractions",
+      name: "Used in Environmental Interactions",
+      type: "manyToManyRelationship",
+      icon: "mdi-puzzle-outline",
+      sizing: 4,
+      tooltip: "Environmental interactions that require this specific spell.",
+      relationshipSettings: {
+        connectedObjectType: "environmentalInteractions",
+        connectedField: "requiredSpell"
+      }
+    },
+    {
+      id: "environmentalPuzzleUses",
+      name: "Environmental & Puzzle Uses",
+      type: "wysiwyg",
+      icon: "mdi-puzzle-outline",
+      sizing: 12,
+      tooltip: "How this spell can interact with the environment or solve puzzles."
+    },
+    {
+      id: "combatTips",
+      name: "Combat Tips",
+      type: "wysiwyg",
+      icon: "mdi-sword-cross",
+      sizing: 12,
+      tooltip: "Strategy notes for using this spell effectively in combat."
+    },
+    {
+      id: "animationNotes",
+      name: "Animation/VFX Notes",
+      type: "wysiwyg",
+      icon: "mdi-movie-play-outline",
+      sizing: 12,
+      tooltip: "Visual effects and animation reference for this spell."
     },
     {
       id: "breakSpoilers",

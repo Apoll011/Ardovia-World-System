@@ -574,6 +574,30 @@ export const itemsBlueprint: I_Blueprint = {
       }
     },
     {
+      id: "droppedByEnemies",
+      name: "Dropped by Enemy Types",
+      type: "manyToManyRelationship",
+      icon: "mdi-skull",
+      sizing: 6,
+      tooltip: "Enemy types that drop this item as loot.",
+      relationshipSettings: {
+        connectedObjectType: "enemyTypes",
+        connectedField: "lootDrops"
+      }
+    },
+    {
+      id: "usedInInteractions",
+      name: "Used in Environmental Interactions",
+      type: "manyToManyRelationship",
+      icon: "mdi-puzzle-outline",
+      sizing: 6,
+      tooltip: "Environmental interactions that require this item.",
+      relationshipSettings: {
+        connectedObjectType: "environmentalInteractions",
+        connectedField: "requiredItem"
+      }
+    },
+    {
       id: "breakSpoilers",
       name: "Secrets/Spoilers/DM notes",
       type: "break",

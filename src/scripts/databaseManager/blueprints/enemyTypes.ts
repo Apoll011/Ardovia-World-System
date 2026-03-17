@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
-export const chaptersBlueprint: I_Blueprint = {
-  _id: "chapters",
-  order: 450,
-  namePlural: "Chapters",
-  nameSingular: "Chapter",
-  icon: "mdi-file-outline",
-  category: "Story/Lore",
+export const enemyTypesBlueprint: I_Blueprint = {
+  _id: "enemyTypes",
+  order: 380,
+  namePlural: "Enemy Types",
+  nameSingular: "Enemy Type",
+  icon: "mdi-skull",
+  category: "World",
   extraFields: [
     {
       id: "breakDocumentSettings",
@@ -17,7 +17,7 @@ export const chaptersBlueprint: I_Blueprint = {
       id: "name",
       name: "Name",
       type: "text",
-      icon: "mdi-file-outline",
+      icon: "mdi-skull",
       sizing: 3
     },
     {
@@ -27,11 +27,10 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This field is used to build up custom hierarchical tree structure in the main list of items in the left side of the app.
         <br> You can use this for an infinite amount of sub-levels to the hierarchical structure.
-        <br> An example would be multiple sub-groups (provinces) of Roman Empire belonging under the main political group called "Roman Empire".
         `,
       sizing: 3,
       relationshipSettings: {
-        connectedObjectType: "chapters"
+        connectedObjectType: "enemyTypes"
       }
     },
     {
@@ -76,8 +75,7 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to minor document mode.
         <br>
-        A document with minor document mode toggled on will not show in any other relationship searches.<br>
-        The idea behind this setting is to allow for creation of documents that will not clutter the search, but could be theoretically relevant in some very specific cases to the story (eg: distant relatives of a character).
+        A document with minor document mode toggled on will not show in any other relationship searches.
         `,
       sizing: 3
     },
@@ -89,7 +87,7 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `This setting allows for setting the current document to dead/gone/destroyed mode.
         <br>
-        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it - showing that it is no longer a part of the current timeline.
+        A document with dead/gone/destroyed mode toggled on will have a crossed-over text modifier applied to it.
         `,
       sizing: 3
     },
@@ -113,7 +111,6 @@ export const chaptersBlueprint: I_Blueprint = {
       tooltip:
         `In case the default sorting via alphabet in the hierarchical tree on the left is inadequate for your needs, this field allows you to fill custom numbers to order by that get placed before the default alphabetical order.
         <br>It is heavily suggested to "pad-out" the custom order numbers by writing for example 100 (or least 10) instead of 1.
-        <br>This allows for extra "padding" between the items in case a new one needs to be added in the middle without needing to redo the custom order on all documents.
         `,
       sizing: 3
     },
@@ -126,10 +123,6 @@ export const chaptersBlueprint: I_Blueprint = {
         `Tags are used to sort the same (or even different) document types into a custom groups based on your needs.
         <br>
         A document may have any number of tags, but each tag can be present only once.
-        <br>
-        This limitation also applies to any variation of lower or upper case iterations of the same tag.
-        <br>
-        Example: A tag called "Player Party" will be considered the same tag as "player party", "PlAyER PaRtY" or anything similar.
         `,
       sizing: 8
     },
@@ -143,16 +136,6 @@ export const chaptersBlueprint: I_Blueprint = {
         Document templates are used to determine which fields will the current
         <br>
         document show both in view and edit mode.
-        <br>
-        Due to current technical limitations, new templates can be added and existing can
-        <br>
-        be edited/deleted only from the "Export project/document" popup.
-        <br>
-        Please also note that the updates to the template need a document tab reload.
-        <br>
-        This can be achieved either by closing an opening the current tab or switching
-        <br>
-        to another one and then back to this one.
         `,
       sizing: 4
     },
@@ -189,34 +172,144 @@ export const chaptersBlueprint: I_Blueprint = {
       sizing: 12
     },
     {
-      id: "pairedConnectedNotes",
-      name: "Connected to Lore notes/Other notes",
-      type: "manyToManyRelationship",
-      icon: "mdi-script-text-outline",
-      sizing: 12,
-      relationshipSettings: {
-        connectedObjectType: "loreNotes",
-        connectedField: "pairedConnectedChapters"
-      }
+      id: "enemyCategory",
+      name: "Enemy Category",
+      type: "singleSelect",
+      icon: "fas fa-dragon",
+      sizing: 4,
+      predefinedSelectValues: [
+        "Humanoid",
+        "Beast",
+        "Magical",
+        "Undead",
+        "Demonic",
+        "Elemental",
+        "Other"
+      ]
     },
     {
-      id: "storyBeats",
-      name: "Story Beats",
-      type: "manyToManyRelationship",
-      icon: "mdi-book-open-page-variant-outline",
-      sizing: 12,
-      tooltip: "Key narrative moments that make up this chapter.",
-      relationshipSettings: {
-        connectedObjectType: "storyBeats",
-        connectedField: "chapter"
-      }
+      id: "magicWeakness",
+      name: "Magic Weakness",
+      type: "singleSelect",
+      icon: "fas fa-hat-wizard",
+      sizing: 4,
+      tooltip: "The type of magic this enemy is most vulnerable to.",
+      predefinedSelectValues: [
+        "Fire",
+        "Water",
+        "Earth",
+        "Air",
+        "Weather",
+        "Nature",
+        "Spirit",
+        "None"
+      ]
     },
     {
-      id: "content",
-      name: "Chapter content",
+      id: "isBoss",
+      name: "Is a Boss",
+      type: "switch",
+      icon: "mdi-crown",
+      sizing: 2,
+      tooltip: "Toggle on if this enemy type is a boss encounter."
+    },
+    {
+      id: "healthPoints",
+      name: "Health Points",
+      type: "number",
+      icon: "mdi-heart",
+      sizing: 2
+    },
+    {
+      id: "strengthStat",
+      name: "Strength",
+      type: "number",
+      icon: "mdi-arm-flex",
+      sizing: 2
+    },
+    {
+      id: "speedStat",
+      name: "Speed",
+      type: "number",
+      icon: "mdi-run-fast",
+      sizing: 2
+    },
+    {
+      id: "magicResistance",
+      name: "Magic Resistance",
+      type: "number",
+      icon: "fas fa-hat-wizard",
+      sizing: 2
+    },
+    {
+      id: "description",
+      name: "Description & Lore",
       type: "wysiwyg",
       icon: "mdi-book-open-page-variant-outline",
+      sizing: 12,
+      tooltip: "Appearance, backstory, and lore for this enemy type."
+    },
+    {
+      id: "combatStrategy",
+      name: "Combat Strategy",
+      type: "wysiwyg",
+      icon: "mdi-sword-cross",
+      sizing: 12,
+      tooltip: "Tips and strategy notes for players encountering this enemy."
+    },
+    {
+      id: "breakConnections",
+      name: "Connections",
+      type: "break",
       sizing: 12
+    },
+    {
+      id: "behaviorPattern",
+      name: "Behavior Pattern",
+      type: "manyToManyRelationship",
+      icon: "mdi-head-cog",
+      sizing: 6,
+      tooltip: "AI behavior patterns this enemy uses.",
+      relationshipSettings: {
+        connectedObjectType: "behaviorPatterns",
+        connectedField: "enemyType"
+      }
+    },
+    {
+      id: "relatedLocations",
+      name: "Found in Locations",
+      type: "manyToManyRelationship",
+      icon: "mdi-map-marker-radius",
+      sizing: 6,
+      tooltip: "Locations where this enemy type can be encountered.",
+      relationshipSettings: {
+        connectedObjectType: "locations",
+        connectedField: "enemyEncounters"
+      }
+    },
+    {
+      id: "lootDrops",
+      name: "Loot Drops",
+      type: "manyToManyRelationship",
+      icon: "mdi-sword",
+      sizing: 6,
+      tooltip: "Items that can drop from this enemy.",
+      relationshipSettings: {
+        connectedObjectType: "items",
+        connectedField: "droppedByEnemies"
+      }
+    },
+    {
+      id: "relatedQuest",
+      name: "Related Quest/Event",
+      type: "manyToManyRelationship",
+      icon: "mdi-calendar-text",
+      sizing: 6,
+      tooltip: "Quest(s) this enemy is specifically related to (e.g. boss of a quest).",
+      relationshipSettings: {
+        connectedObjectType: "events",
+        connectedField: "relatedEnemyTypes"
+      }
     },
     {
       id: "breakSpoilers",

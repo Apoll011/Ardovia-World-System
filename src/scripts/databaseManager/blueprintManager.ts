@@ -23,6 +23,12 @@ import { conditionsBlueprint } from "src/scripts/databaseManager/blueprints/cond
 import { professionsBlueprint } from "src/scripts/databaseManager/blueprints/professions"
 import { skillsBlueprint } from "src/scripts/databaseManager/blueprints/skills"
 import { cultureBlueprint } from "src/scripts/databaseManager/blueprints/culture"
+import { spellsBlueprint } from "src/scripts/databaseManager/blueprints/spells"
+import { enemyTypesBlueprint } from "src/scripts/databaseManager/blueprints/enemyTypes"
+import { behaviorPatternsBlueprint } from "src/scripts/databaseManager/blueprints/behaviorPatterns"
+import { environmentalInteractionsBlueprint } from "src/scripts/databaseManager/blueprints/environmentalInteractions"
+import { storyBeatsBlueprint } from "src/scripts/databaseManager/blueprints/storyBeats"
+import { npcSchedulesBlueprint } from "src/scripts/databaseManager/blueprints/npcSchedules"
 
 /**
  * Loads all the blueprints and processes them apropriatelly
@@ -57,7 +63,13 @@ export const engageBlueprints = async () => {
     conditionsBlueprint,
     professionsBlueprint,
     skillsBlueprint,
-    cultureBlueprint
+    cultureBlueprint,
+    spellsBlueprint,
+    enemyTypesBlueprint,
+    behaviorPatternsBlueprint,
+    environmentalInteractionsBlueprint,
+    storyBeatsBlueprint,
+    npcSchedulesBlueprint
   ]
 
   /**
