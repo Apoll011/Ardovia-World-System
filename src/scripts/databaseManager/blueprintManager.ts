@@ -29,6 +29,12 @@ import { behaviorPatternsBlueprint } from "src/scripts/databaseManager/blueprint
 import { environmentalInteractionsBlueprint } from "src/scripts/databaseManager/blueprints/environmentalInteractions"
 import { storyBeatsBlueprint } from "src/scripts/databaseManager/blueprints/storyBeats"
 import { npcSchedulesBlueprint } from "src/scripts/databaseManager/blueprints/npcSchedules"
+import { kingdomBlueprint } from "src/scripts/databaseManager/blueprints/kingdom"
+import { cityBlueprint } from "src/scripts/databaseManager/blueprints/city"
+import { districtBlueprint } from "src/scripts/databaseManager/blueprints/district"
+import { questBlueprint } from "src/scripts/databaseManager/blueprints/quest"
+import { historicalEventBlueprint } from "src/scripts/databaseManager/blueprints/historicalEvent"
+import { culturalLoreBlueprint } from "src/scripts/databaseManager/blueprints/culturalLore"
 
 /**
  * Loads all the blueprints and processes them apropriatelly
@@ -69,7 +75,13 @@ export const engageBlueprints = async () => {
     behaviorPatternsBlueprint,
     environmentalInteractionsBlueprint,
     storyBeatsBlueprint,
-    npcSchedulesBlueprint
+    npcSchedulesBlueprint,
+    kingdomBlueprint,
+    cityBlueprint,
+    districtBlueprint,
+    questBlueprint,
+    historicalEventBlueprint,
+    culturalLoreBlueprint
   ]
 
   /**
