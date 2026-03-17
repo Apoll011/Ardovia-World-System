@@ -341,7 +341,7 @@
 
 ### Known issues
 
-- POSSIBLY FIXED: When creating a brand new project, Fantasia Archive sometimes doesn't load the default categories in the left hierarchical tree. A temporary workaround before the issue is fixed is restarting the program - the project stays intact, can be normally edited and no data loss occurs.
+- POSSIBLY FIXED: When creating a brand new project, Ardovia World System sometimes doesn't load the default categories in the left hierarchical tree. A temporary workaround before the issue is fixed is restarting the program - the project stays intact, can be normally edited and no data loss occurs.
 - POSSIBLY FIXED: Some users report that dialog (popups) don't function the very first time you start FA. This is solved by restarting the application. The bug doesn't seem to appear again once FA has been started at least once before.
 - Overusing Tags currently causes app crashes on some PCs. If you suffer from this issue, reduce the number of tags in your project below 10.
 
@@ -373,7 +373,7 @@
 
 ### Known issues
 
-- When creating a brand new project, Fantasia Archive sometimes doesn't load the default categories in the left hierarchical tree. A temporary workaround before the issue is fixed is restarting the program - the project stays intact, can be normally edited and no data loss occurs.
+- When creating a brand new project, Ardovia World System sometimes doesn't load the default categories in the left hierarchical tree. A temporary workaround before the issue is fixed is restarting the program - the project stays intact, can be normally edited and no data loss occurs.
 - Some users report that dialog (popups) don't function the very first time you start FA. This is solved by restarting the application. The bug doesn't seem to appear again once FA has been started at least once before.
 - Overusing Tags currently causes app crashes on some PCs. If you suffer from this issue, reduce the number of tags in your project below 10.
 
@@ -501,7 +501,7 @@
 
 ### Known issues
 
-- When creating a brand new project, Fantasia Archive sometimes doesn't load the default categories in the left hierarchical tree. A temporary workaround before the issue is fixed is restarting the program - the project stays intact, can be normally edited and no data loss occurs.
+- When creating a brand new project, Ardovia World System sometimes doesn't load the default categories in the left hierarchical tree. A temporary workaround before the issue is fixed is restarting the program - the project stays intact, can be normally edited and no data loss occurs.
 
 ### Bugfixes
 
@@ -580,7 +580,7 @@
 
 ### Known issues
 
-- When creating a brand new project, Fantasia Archive sometimes doesn't load the default categories in the left hierarchical tree. A temporary workaround before the issue is fixed is restarting the program - the project stays intact, can be normally edited and no data loss occurs.
+- When creating a brand new project, Ardovia World System sometimes doesn't load the default categories in the left hierarchical tree. A temporary workaround before the issue is fixed is restarting the program - the project stays intact, can be normally edited and no data loss occurs.
 
 ### Bugfixes
 
@@ -621,7 +621,7 @@
 - Added an "Advanced search guide" dialog with a manual on how to use the advanced search
 - Added a "Changelog" dialog - you might be reading it right now!
 - Added an option of "Raw magical energy manipulation" to "General schools of magic" in "Magic/Spell" document type (for those of us who like our characters throwing half a city at each other anime-style!)
-- Added "About Fantasia Archive" dialog showing current app version (more details will be added in the future)
+- Added "About Ardovia World System" dialog showing current app version (more details will be added in the future)
 - New control bar added for documents and project control along with a more intelligent button redesign
 - A new logo added to the app (better visibility of the logo in small scales and icons)
 - Massive overhaul of the search engine used by the Quick opening existing document and single/multi relationship fields (now supports tags, categories, document types, intelligent filtering, and intelligent sorting via the importance of the found values)

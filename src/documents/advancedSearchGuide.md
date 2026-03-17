@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Fantasia Archive comes with a fairly advanced search-engine present in most of the search fields that look up through either all or at least one type of document - these are for example the multiple and single relationship fields on each document page and the quick-search popup.
+Ardovia World System comes with a fairly advanced search-engine present in most of the search fields that look up through either all or at least one type of document - these are for example the multiple and single relationship fields on each document page and the quick-search popup.
 
 ---
 
@@ -36,7 +36,7 @@ The search itself works the following: You can search any amount of words and th
 
 ## Filtering
 
-Except for the advanced search functionality, Fantasia Archive also offers instant filtering via multiple attributes for further narrowing search results.
+Except for the advanced search functionality, Ardovia World System also offers instant filtering via multiple attributes for further narrowing search results.
 
 - **NOTE: All of the following filter values (including the Full-search filtering in the next section) support matching any part of the search-text with any part of the search-term**
   - Example: `>nada` will match with `Continent > North America > Canada > Toronto`

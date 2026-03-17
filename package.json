@@ -1,8 +1,8 @@
 {
-  "name": "fantasiaarchive",
+  "name": "ardoviaworldsystem",
   "version": "0.1.15",
   "description": "A database manager for world building",
-  "productName": "Fantasia Archive",
+  "productName": "Ardovia World System",
   "author": "Vishiri <vishiri.rilgatan@gmail.com>",
   "license": "GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007",
   "private": true,

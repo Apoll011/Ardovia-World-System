@@ -552,7 +552,7 @@
               active-class="bg-gunmetal-light text-cultured"
               class="noHigh"
               >
-              <q-item-section>About Fantasia Archive</q-item-section>
+              <q-item-section>About Ardovia World System</q-item-section>
               <q-item-section avatar>
                 <q-icon name="mdi-information-variant" />
               </q-item-section>

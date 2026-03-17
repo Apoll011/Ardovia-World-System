@@ -17,7 +17,7 @@
         <h5 class="mainSubTitle">Welcome to </h5>
       </div>
       <div class="col-12">
-        <h2 class="mainTitle">Fantasia Archive</h2>
+        <h2 class="mainTitle">Ardovia World System</h2>
       </div>
 
       <div class="col-12 q-mb-lg">

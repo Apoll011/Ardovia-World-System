@@ -9,12 +9,12 @@
       dark
     >
       <q-card-section>
-        <h6 class="text-center q-mt-lg q-mb-sm">About Fantasia Archive</h6>
+        <h6 class="text-center q-mt-lg q-mb-sm">About Ardovia World System</h6>
       </q-card-section>
 
         <q-card-section>
           <div>
-            Currently running Fantasia Archive version: <span class="text-bold text-primary">{{appVersion}}</span>
+            Currently running Ardovia World System version: <span class="text-bold text-primary">{{appVersion}}</span>
           </div>
        </q-card-section>
 
