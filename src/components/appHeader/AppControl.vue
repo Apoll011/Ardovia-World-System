@@ -175,7 +175,7 @@
               class="noHigh"
               @click="newProjectAssignUID"
             >
-              <q-item-section>New project</q-item-section>
+              <q-item-section>Create New Base</q-item-section>
                <q-item-section avatar>
                 <q-icon name="mdi-plus" />
               </q-item-section>
@@ -192,7 +192,7 @@
               @click="commenceSave"
               :disable="!projectExists || isFrontpage"
             >
-              <q-item-section>Save current project</q-item-section>
+              <q-item-section>Save Project</q-item-section>
               <q-item-section avatar>
                 <q-icon name="mdi-package-variant-closed" />
               </q-item-section>
@@ -206,7 +206,7 @@
               class="noHigh"
               @click="loadProjectAssignUID"
             >
-              <q-item-section>Load existing project</q-item-section>
+              <q-item-section>Import Project</q-item-section>
               <q-item-section avatar>
                 <q-icon name="mdi-package-variant" />
               </q-item-section>
@@ -295,24 +295,9 @@
                     @click="mergeProjectAssignUID"
                     :disable="!projectExists || isFrontpage"
                   >
-                    <q-item-section>Merge another project into the current one</q-item-section>
+                    <q-item-section>Merge Another Project</q-item-section>
                     <q-item-section avatar>
                       <q-icon name="mdi-folder-plus-outline" />
-                    </q-item-section>
-                  </q-item>
-
-                  <q-item
-                    v-close-popup
-                    clickable
-                    active
-                    active-class="bg-gunmetal-light text-cultured"
-                    class="noHigh"
-                    @click="customCssEditorAssignUID"
-                    :disable="!projectExists"
-                  >
-                    <q-item-section>Custom CSS editor</q-item-section>
-                    <q-item-section avatar>
-                      <q-icon name="mdi-language-css3" />
                     </q-item-section>
                   </q-item>
 

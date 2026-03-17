@@ -6,7 +6,7 @@
       >
       <q-card dark class="documentCloseDialog">
          <q-card-section class="row justify-center">
-          <h6 class="text-center q-my-sm">Load existing project</h6>
+          <h6 class="text-center q-my-sm">Import Project</h6>
         </q-card-section>
 
         <q-card-section class="row justify-center q-mx-xl">
