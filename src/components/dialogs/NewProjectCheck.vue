@@ -6,7 +6,7 @@
       >
       <q-card dark class="newProjectCheckDialog">
          <q-card-section class="row justify-center">
-          <h6 class="text-center q-my-sm">New project</h6>
+          <h6 class="text-center q-my-sm">Create New Base</h6>
         </q-card-section>
 
         <q-card-section class="row justify-center q-mx-xl" v-if="oldProjectName.length > 0">

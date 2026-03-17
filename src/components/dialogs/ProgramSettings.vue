@@ -1,5 +1,13 @@
 <template>
 
+  <div>
+
+    <!-- Custom CSS editor dialog -->
+    <customCssEditorDialog
+      :dialog-trigger="customCssEditorDialogTrigger"
+      @trigger-dialog-close="customCssEditorDialogClose"
+    />
+
   <q-dialog
     v-model="dialogModel"
     persistent
@@ -30,6 +38,10 @@
           <q-separator dark />
 
           <q-tab name="keybinds" label="Keybinds" />
+
+          <q-separator dark />
+
+          <q-tab name="appearanceSettings" label="Appearance &amp; Custom CSS" />
         </q-tabs>
 
       </q-card-section>
@@ -205,21 +217,6 @@
                     <div class="text-bold q-mt-xl">
                       Application extras
                     </div>
-                  </div>
-
-                  <div class="col-12 col-md-6 col-lg-4 optionWrapper">
-                    <div class="optionTitle">
-                      Hide Welcome screen social links
-                    <q-icon name="mdi-help-circle" size="16px" class="q-ml-md">
-                      <q-tooltip :delay="500">
-                        Hides all the social links on the Welcome screen.
-                      </q-tooltip>
-                    </q-icon>
-                    </div>
-
-                      <q-toggle
-                        v-model="options.hideWelcomeScreenSocials"
-                      />
                   </div>
 
                   <div class="col-12 col-md-6 col-lg-4 optionWrapper">
@@ -1034,6 +1031,31 @@
             </q-table>
           </q-tab-panel>
 
+          <q-tab-panel name="appearanceSettings" dark class="q-pt-sm">
+            <q-scroll-area class="programSettingsScrollArea" visible dark :thumb-style="thumbStyle">
+              <div class="row justify-start">
+                <div class="col-12">
+                  <div class="text-h6">Appearance &amp; Custom CSS</div>
+                </div>
+                <div class="col-12 q-mt-xl">
+                  <div class="text-bold q-mb-md">Custom CSS</div>
+                  <p class="q-mb-md">
+                    Inject custom CSS to override the app's appearance.
+                    Changes apply immediately after saving.
+                  </p>
+                  <q-btn
+                    outline
+                    color="primary"
+                    label="Open Custom CSS Editor"
+                    icon="mdi-language-css3"
+                    :disable="!projectExists"
+                    @click="customCssEditorAssignUID"
+                  />
+                </div>
+              </div>
+            </q-scroll-area>
+          </q-tab-panel>
+
         </q-tab-panels>
       </q-card-section>
 
@@ -1043,6 +1065,8 @@
       </q-card-actions>
     </q-card>
   </q-dialog>
+
+  </div>
 
 </template>
 
@@ -1054,8 +1078,9 @@ import DialogBase from "src/components/dialogs/_DialogBase"
 import { extend } from "quasar"
 
 import { OptionsStateInteface } from "src/store/module-options/state"
+import customCssEditorDialog from "src/components/dialogs/CustomCssEditor.vue"
 @Component({
-  components: { }
+  components: { customCssEditorDialog }
 })
 export default class ProgramSettings extends DialogBase {
   /****************************************************************/
@@ -1158,7 +1183,6 @@ export default class ProgramSettings extends DialogBase {
     compactDocumentCount: false,
     showDocumentID: false,
     invertCategoryPosition: false,
-    hideWelcomeScreenSocials: false,
     hideTooltipsStart: false,
     hideTooltipsProject: false,
     hideTreeOrderNumbers: false,
@@ -1395,6 +1419,30 @@ export default class ProgramSettings extends DialogBase {
         userKeybind: (this.options.userKeybindList.find(userKb => userKb.id === keybind.id)) || ""
       }
     })
+  }
+
+  /****************************************************************/
+  // Project existence check
+  /****************************************************************/
+
+  /**
+   * Determines if any project exists
+   */
+  get projectExists () {
+    return (this.SGET_getProjectName.length > 0)
+  }
+
+  /****************************************************************/
+  // Custom CSS editor dialog
+  /****************************************************************/
+
+  customCssEditorDialogTrigger: string | false = false
+  customCssEditorDialogClose () {
+    this.customCssEditorDialogTrigger = false
+  }
+
+  customCssEditorAssignUID () {
+    this.customCssEditorDialogTrigger = this.generateUID()
   }
 }
 </script>
