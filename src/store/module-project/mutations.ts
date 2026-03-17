@@ -1,4 +1,4 @@
-import { MutationTree } from "vuex"
+import type { MutationTree } from "vuex"
 import { ProjectInterface } from "./state"
 
 const mutation: MutationTree<ProjectInterface> = {

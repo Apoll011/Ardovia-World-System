@@ -1,5 +1,5 @@
 import { I_Blueprint } from "./../../interfaces/I_Blueprint"
-import { MutationTree } from "vuex"
+import type { MutationTree } from "vuex"
 import { BlueprintStateInterface } from "./state"
 
 const mutation: MutationTree<BlueprintStateInterface> = {

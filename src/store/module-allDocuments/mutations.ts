@@ -1,4 +1,4 @@
-import { MutationTree } from "vuex"
+import type { MutationTree } from "vuex"
 import { AllDocumentsStateInterface } from "./state"
 import { I_ShortenedDocument } from "src/interfaces/I_OpenedDocument"
 

@@ -1,4 +1,4 @@
-import { Module } from "vuex"
+import type { Module } from "vuex"
 import { StateInterface } from "../index"
 import state, { OpenDocumentsStateInterface } from "./state"
 import actions from "./actions"

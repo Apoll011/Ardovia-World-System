@@ -1,5 +1,5 @@
 import { uid } from "quasar"
-import { MutationTree } from "vuex"
+import type { MutationTree } from "vuex"
 import { FloatingWindowsStateInteface } from "./state"
 
 const mutation: MutationTree<FloatingWindowsStateInteface> = {

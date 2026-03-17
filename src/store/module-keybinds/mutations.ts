@@ -1,4 +1,4 @@
-import { MutationTree } from "vuex"
+import type { MutationTree } from "vuex"
 import { KeybindsStateInterface } from "./state"
 import { I_KeyPressObject } from "./../../interfaces/I_KeypressObject"
 

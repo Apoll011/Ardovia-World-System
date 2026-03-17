@@ -1,4 +1,4 @@
-import { ActionTree } from "vuex"
+import type { ActionTree } from "vuex"
 import { StateInterface } from "../index"
 import { OpenDocumentsStateInterface } from "./state"
 

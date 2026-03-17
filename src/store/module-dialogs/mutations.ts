@@ -1,4 +1,4 @@
-import { MutationTree } from "vuex"
+import type { MutationTree } from "vuex"
 import { DialogsStateInterface } from "./state"
 import { uid } from "quasar"
 
