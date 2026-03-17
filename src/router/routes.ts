@@ -1,4 +1,4 @@
-import { RouteConfig } from "vue-router"
+import type { RouteConfig } from "vue-router"
 import DocumentLayout from "src/layouts/DocumentLayout.vue"
 import ProjectManagentLayout from "layouts/ProjectManagentLayout.vue"
 
