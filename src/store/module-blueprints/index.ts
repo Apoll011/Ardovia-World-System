@@ -1,4 +1,4 @@
-import { Module } from "vuex"
+import type { Module } from "vuex"
 import { StateInterface } from "../index"
 import state, { BlueprintStateInterface } from "./state"
 import actions from "./actions"
