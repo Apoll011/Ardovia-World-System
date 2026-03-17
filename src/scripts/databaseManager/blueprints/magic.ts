@@ -771,13 +771,13 @@ export const magicBlueprint: I_Blueprint = {
     },
     {
       id: "spellsInClass",
-      name: "Spells in this Magic Class",
+      name: "Skills/Spells in this Magic Class",
       type: "manyToManyRelationship",
       icon: "fas fa-magic",
       sizing: 6,
-      tooltip: "Individual spells that belong to this magic class.",
+      tooltip: "Individual skills and spells (from the Skills/Spells/Other document type) that belong to this magic class.",
       relationshipSettings: {
-        connectedObjectType: "spells",
+        connectedObjectType: "skills",
         connectedField: "magicClass"
       }
     },

@@ -599,6 +599,163 @@ export const skillsBlueprint: I_Blueprint = {
       }
     },
     {
+      id: "breakArdoviaSkill",
+      name: "Ardovia - Skill/Spell Properties",
+      type: "break",
+      sizing: 12
+    },
+    {
+      id: "skillType",
+      name: "Skill Type",
+      type: "singleSelect",
+      icon: "mdi-sword-cross",
+      sizing: 3,
+      tooltip: "Categorizes this skill/spell into a broad type for filtering and display purposes.",
+      predefinedSelectValues: [
+        "Combat",
+        "Magical",
+        "Crafting",
+        "Utility",
+        "Special"
+      ]
+    },
+    {
+      id: "rangeType",
+      name: "Range Type",
+      type: "singleSelect",
+      icon: "mdi-arrow-expand-all",
+      sizing: 3,
+      tooltip: "How far/wide this skill or spell reaches.",
+      predefinedSelectValues: [
+        "Melee",
+        "Ranged",
+        "Area of Effect",
+        "Self",
+        "Touch",
+        "Other"
+      ]
+    },
+    {
+      id: "ardovianName",
+      name: "Ardovian Incantation",
+      type: "text",
+      icon: "fas fa-hat-wizard",
+      sizing: 6,
+      tooltip: "The magical incantation used to cast this spell in the Ardovian tongue (e.g. \"Womewt ik by tfe kimw\"). Used for magical skills/spells."
+    },
+    {
+      id: "manaCost",
+      name: "Mana Cost",
+      type: "number",
+      icon: "mdi-water",
+      sizing: 3,
+      tooltip: "Mana points required to cast this spell. Used for magical skills."
+    },
+    {
+      id: "cooldownSeconds",
+      name: "Cooldown (seconds)",
+      type: "number",
+      icon: "mdi-timer-outline",
+      sizing: 3,
+      tooltip: "Seconds that must pass before the skill/spell can be used again."
+    },
+    {
+      id: "magicClass",
+      name: "Magic Class",
+      type: "manyToManyRelationship",
+      icon: "fas fa-hat-wizard",
+      sizing: 6,
+      tooltip: "The magic class(es) this skill/spell belongs to. Primarily used for magical skills.",
+      relationshipSettings: {
+        connectedObjectType: "magic",
+        connectedField: "spellsInClass"
+      }
+    },
+    {
+      id: "unlockCondition",
+      name: "Unlock Condition",
+      type: "wysiwyg",
+      icon: "mdi-lock-open-variant-outline",
+      sizing: 12,
+      tooltip: "How the player learns or acquires this skill/spell (quest reward, trainer, level up, etc.)."
+    },
+    {
+      id: "teachingNPC",
+      name: "Teaching NPC",
+      type: "manyToManyRelationship",
+      icon: "mdi-account",
+      sizing: 6,
+      tooltip: "NPC(s) who can teach the player this skill/spell.",
+      relationshipSettings: {
+        connectedObjectType: "characters",
+        connectedField: "skillsTaught"
+      }
+    },
+    {
+      id: "relatedQuest",
+      name: "Related Quest",
+      type: "manyToManyRelationship",
+      icon: "mdi-map-marker-path",
+      sizing: 6,
+      tooltip: "Quest(s) that teach, require, or reward this skill/spell.",
+      relationshipSettings: {
+        connectedObjectType: "quest",
+        connectedField: "requiredSkills"
+      }
+    },
+    {
+      id: "environmentalUses",
+      name: "Environmental & Puzzle Uses",
+      type: "wysiwyg",
+      icon: "mdi-puzzle-outline",
+      sizing: 12,
+      tooltip: "How this skill/spell can interact with the environment or solve puzzles."
+    },
+    {
+      id: "combatStrategy",
+      name: "Combat Strategy",
+      type: "wysiwyg",
+      icon: "mdi-sword-cross",
+      sizing: 12,
+      tooltip: "Strategy notes for using this skill/spell effectively in combat."
+    },
+    {
+      id: "synergies",
+      name: "Synergies with Other Skills/Spells",
+      type: "manyToManyRelationship",
+      icon: "mdi-link-variant",
+      sizing: 6,
+      tooltip: "Skills or spells that work particularly well together with this one.",
+      relationshipSettings: {
+        connectedObjectType: "skills",
+        connectedField: "synergies"
+      }
+    },
+    {
+      id: "charactersThatKnow",
+      name: "Characters That Know This Skill",
+      type: "manyToManyRelationship",
+      icon: "mdi-account-group",
+      sizing: 6,
+      tooltip: "Characters who have learned or possess this skill/spell.",
+      relationshipSettings: {
+        connectedObjectType: "characters",
+        connectedField: "knownSkills"
+      }
+    },
+    {
+      id: "isFavoredByProfession",
+      name: "Favored by Occupations/Classes",
+      type: "manyToManyRelationship",
+      icon: "fab fa-pied-piper-hat",
+      sizing: 6,
+      tooltip: "Professions or classes for which this skill/spell is particularly important or signature.",
+      relationshipSettings: {
+        connectedObjectType: "professions",
+        connectedField: "pairedConnectedSkills"
+      }
+    },
+    {
       id: "breakSpoilers",
       name: "Secrets/Spoilers/DM notes",
       type: "break",

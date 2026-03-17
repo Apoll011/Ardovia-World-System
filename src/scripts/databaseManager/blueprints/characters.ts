@@ -1201,11 +1201,13 @@ export const charactersBlueprint: I_Blueprint = {
     {
       id: "knownSkills",
       name: "Known Skills/Abilities",
-      type: "manyToNoneRelationship",
+      type: "manyToManyRelationship",
       icon: "mdi-sword-cross",
       sizing: 6,
+      tooltip: "Skills and abilities this character has learned.",
       relationshipSettings: {
-        connectedObjectType: "skills"
+        connectedObjectType: "skills",
+        connectedField: "charactersThatKnow"
       }
     },
 
@@ -1762,6 +1764,18 @@ export const charactersBlueprint: I_Blueprint = {
       tooltip: "Spells that this character can teach the player.",
       relationshipSettings: {
         connectedObjectType: "spells",
+        connectedField: "teachingNPC"
+      }
+    },
+    {
+      id: "skillsTaught",
+      name: "Skills This Character Teaches",
+      type: "manyToManyRelationship",
+      icon: "mdi-sword-cross",
+      sizing: 6,
+      tooltip: "Skills/abilities that this character can teach the player.",
+      relationshipSettings: {
+        connectedObjectType: "skills",
         connectedField: "teachingNPC"
       }
     },
