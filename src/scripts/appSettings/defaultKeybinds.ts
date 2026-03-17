@@ -63,7 +63,7 @@ export const defaultKeybinds = [
     which: 74,
     editable: true,
     id: "openAppOptions",
-    tooltip: "Open Fantasia Archive options"
+    tooltip: "Open Ardovia World System options"
   },
 
   // Toggle hierarchical tree - CTRL + ALT + SHIFT + T

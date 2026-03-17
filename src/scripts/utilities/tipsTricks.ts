@@ -11,7 +11,7 @@ export const tipsTricks: string[] = [
   "The settings menu contains a whole assortment of both big and small tweaks to tailor the app to your needs!",
   "FA has a Dark Mode that is no mere afterthought and is fully serviceable!",
   "Many parts of the app react to a middle-mouse click. For example, you can close document tabs or open hierarchical tree items with it directly!",
-  "Fantasia Archive is free; no strings attached: No ads, no trackers, no crypto-mining happening on your PC and all your data is all yours!",
+  "Ardovia World System is free; no strings attached: No ads, no trackers, no crypto-mining happening on your PC and all your data is all yours!",
   "If these tips annoy you, there is a switch to turn them off in the program settings.",
   "The Relationship searching functionality is packed to the brim with extra features you can use to find what you need! Read all about it in the \"Advanced search guide\" in the Help menu!",
   "Your project gets auto-saved on exit, but it is recommended to use the \"Save\" function once in a while to make sure the data stays safe.",

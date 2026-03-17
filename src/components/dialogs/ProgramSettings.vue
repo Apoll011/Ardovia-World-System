@@ -10,7 +10,7 @@
       dark
     >
 
-      <h4 class="programSettingsTitle">Fantasia Archive Settings</h4>
+      <h4 class="programSettingsTitle">Ardovia World System Settings</h4>
       <q-card-section horizontal class="programSettingsTabs">
         <q-tabs
           v-model="activeTab"

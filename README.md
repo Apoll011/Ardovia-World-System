@@ -1,4 +1,4 @@
-# Fantasia Archive (fantasiaarchive)
+# Ardovia World System (ardoviaworldsystem)
 
 A database manager for world building
 
@@ -12,14 +12,14 @@ Simply install Node.JS for your system. You can get it straight from their site,
 
 ## Download the program
 
-Click on the green code button above, and download the repository as a zip file. Extract the zip file and move the resulting fantasia-archive-master folder to your home directory.
+Click on the green code button above, and download the repository as a zip file. Extract the zip file and move the resulting ardovia-world-system-master folder to your home directory.
 
 ## Install the dependencies
 
 In the terminal, do the following:
 
 ```bash
-cd fantasia-archive-master
+cd ardovia-world-system-master
 npm install
 ```
 

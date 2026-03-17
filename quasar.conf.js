@@ -149,8 +149,8 @@ module.exports = configure(function (ctx) {
       workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: "Fantasia Archive",
-        short_name: "Fantasia Archive",
+        name: "Ardovia World System",
+        short_name: "Ardovia World System",
         description: "A database manager for world building",
         display: "standalone",
         orientation: "portrait",
@@ -216,7 +216,7 @@ module.exports = configure(function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
        
-        appId: "fantasiaarchive",
+        appId: "ardoviaworldsystem",
         win: {
           icon: 'src-electron/icons/icon.ico'
         }

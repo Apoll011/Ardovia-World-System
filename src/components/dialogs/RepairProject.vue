@@ -69,7 +69,7 @@
         <q-card-actions align="around" class="q-mx-xl q-mt-lg q-mb-md">
           <q-btn
             flat
-            label="Reload Fantasia Archive"
+            label="Reload Ardovia World System"
             color="primary"
             v-close-popup
             @click="reloadFA" />
