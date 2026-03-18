@@ -2,11 +2,11 @@ import { RPGSystemsStats } from "./../extraFieldLists/RPGSystemsStats"
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const charactersBlueprint: I_Blueprint = {
   _id: "characters",
-  order: 370,
+  order: 50,
   namePlural: "Characters",
   nameSingular: "Character",
   icon: "mdi-account",
-  category: "World",
+  category: "Characters",
   extraFields: [
     {
       id: "pairedCurrentLocation",

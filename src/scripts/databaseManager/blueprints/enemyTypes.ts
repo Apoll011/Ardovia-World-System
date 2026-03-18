@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const enemyTypesBlueprint: I_Blueprint = {
   _id: "enemyTypes",
-  order: 380,
+  order: 46,
   namePlural: "Enemy Types",
   nameSingular: "Enemy Type",
   icon: "mdi-skull",
-  category: "World",
+  category: "Gameplay",
   extraFields: [
     {
       id: "breakDocumentSettings",

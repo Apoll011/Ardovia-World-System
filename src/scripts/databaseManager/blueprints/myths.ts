@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const mythsBlueprint: I_Blueprint = {
   _id: "myths",
-  order: 430,
-  namePlural: "Myths/Legends/Stories",
-  nameSingular: "Myth/Legend/Story",
+  order: 46,
+  namePlural: "Myths, Legends & Stories",
+  nameSingular: "Myth/Legend",
   icon: "fas fa-journal-whills",
-  category: "Story/Lore",
+  category: "World",
   extraFields: [
     {
       id: "breakDocumentSettings",

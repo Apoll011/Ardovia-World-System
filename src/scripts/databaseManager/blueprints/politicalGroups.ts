@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const politicalGroupsBlueprint: I_Blueprint = {
   _id: "politicalGroups",
-  order: 280,
-  namePlural: "Ideologies/Political groups",
-  nameSingular: "Ideology/Political group",
+  order: 50,
+  namePlural: "Political Groups & Kingdoms",
+  nameSingular: "Political Group/Kingdom",
   icon: "mdi-bank-outline",
-  category: "Groups/Teachings",
+  category: "Lore",
   extraFields: [
 
     {

@@ -34,6 +34,11 @@ export default class ProjectManagementLayout extends BaseClass {
     const currentProjectName = await retrieveCurrentProjectName()
 
     this.SSET_setProjectName(currentProjectName)
+
+    if (currentProjectName.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      this.$router.replace({ path: "/project" })
+    }
   }
 }
 </script>

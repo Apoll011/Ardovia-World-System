@@ -495,3 +495,38 @@ export const retrieveLastOpenedDocuments = async (): Promise<string[]> => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return (projectData.rows[0]?.doc?.lastOpenedDocList) || []
 }
+
+/**
+ * Update last modified timestamp on the project
+ */
+export const updateProjectLastModified = async () => {
+  if (!window.FA_dbs) {
+    // @ts-ignore
+    window.FA_dbs = {}
+  }
+  window.FA_dbs["project-data"] = new PouchDB("project-data")
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  const projectData = await window.FA_dbs["project-data"].allDocs({ include_docs: true })
+  if (!projectData.rows[0]?.doc) {
+    return
+  }
+  projectData.rows[0].doc.lastModified = new Date().toISOString()
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  await window.FA_dbs["project-data"].put(projectData.rows[0].doc)
+}
+
+/**
+ * Retrieve last modified timestamp from the project
+ */
+export const retrieveProjectLastModified = async (): Promise<string> => {
+  if (!window.FA_dbs) {
+    // @ts-ignore
+    window.FA_dbs = {}
+  }
+  window.FA_dbs["project-data"] = new PouchDB("project-data")
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  const projectData = await window.FA_dbs["project-data"].allDocs({ include_docs: true })
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return projectData.rows[0]?.doc?.lastModified || ""
+}

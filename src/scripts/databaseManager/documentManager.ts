@@ -3,6 +3,7 @@ import { I_OpenedDocument, I_ShortenedDocument } from "src/interfaces/I_OpenedDo
 import { I_Blueprint, I_ExtraFields } from "src/interfaces/I_Blueprint"
 import PouchDB from "pouchdb"
 import { Loading, QSpinnerGears, extend } from "quasar"
+import { updateProjectLastModified } from "src/scripts/projectManagement/projectManagent"
 
 /**
  * Saves the given project and handles all the needed procedures
@@ -396,6 +397,7 @@ export const saveDocument = async (
   // Save the document
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   await window.FA_dbs[document.type].put(documentCopy)
+  await updateProjectLastModified().catch(e => console.log(e))
 
   // Set edit mode for frontend
   if (editModeAfterSave !== null) {

@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const behaviorPatternsBlueprint: I_Blueprint = {
   _id: "behaviorPatterns",
-  order: 385,
+  order: 47,
   namePlural: "Behavior Patterns",
   nameSingular: "Behavior Pattern",
   icon: "mdi-head-cog",
-  category: "World",
+  category: "Characters",
   extraFields: [
     {
       id: "breakDocumentSettings",

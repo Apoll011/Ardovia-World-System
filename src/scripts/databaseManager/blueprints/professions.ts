@@ -2,11 +2,11 @@ import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 import { RPGSystemsStats } from "../extraFieldLists/RPGSystemsStats"
 export const professionsBlueprint: I_Blueprint = {
   _id: "professions",
-  order: 160,
-  namePlural: "Occupations/Classes",
-  nameSingular: "Occupation/Class",
+  order: 49,
+  namePlural: "Professions & Classes",
+  nameSingular: "Profession/Class",
   icon: "fab fa-pied-piper-hat",
-  category: "Details",
+  category: "Characters",
   extraFields: [
     {
       id: "breakDocumentSettings",

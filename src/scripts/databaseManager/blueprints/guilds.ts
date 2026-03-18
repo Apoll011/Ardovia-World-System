@@ -1,11 +1,11 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const guildsBlueprint: I_Blueprint = {
   _id: "guilds",
-  order: 260,
-  namePlural: "Organizations/Other groups",
-  nameSingular: "Organization/Other group",
+  order: 49,
+  namePlural: "Guilds & Organizations",
+  nameSingular: "Guild/Organization",
   icon: "mdi-account-group",
-  category: "Groups/Teachings",
+  category: "Lore",
   extraFields: [
     {
       id: "leaders",

@@ -2,11 +2,11 @@ import { RPGSystemsStats } from "./../extraFieldLists/RPGSystemsStats"
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const itemsBlueprint: I_Blueprint = {
   _id: "items",
-  order: 170,
-  namePlural: "Items",
-  nameSingular: "Item",
+  order: 47,
+  namePlural: "Items & Equipment",
+  nameSingular: "Item/Equipment",
   icon: "mdi-sword",
-  category: "Details",
+  category: "Gameplay",
   extraFields: [
     {
       id: "pairedMagic",

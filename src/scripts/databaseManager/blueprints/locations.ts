@@ -1,9 +1,9 @@
 import { I_Blueprint } from "../../../interfaces/I_Blueprint"
 export const locationsBlueprint: I_Blueprint = {
   _id: "locations",
-  order: 360,
-  namePlural: "Locations/Geography",
-  nameSingular: "Location/Geography",
+  order: 50,
+  namePlural: "Locations",
+  nameSingular: "Location",
   icon: "mdi-map-marker-radius",
   category: "World",
   extraFields: [
