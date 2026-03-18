@@ -51,88 +51,59 @@
       </div>
 
     <div class="projectContentWrapper">
-      <div
-        class="documentGraphParent"
-        :class="{'-fullsize': !graphDataShowing}"
-        >
-        <q-card
-          dark
-          class="documentGraphWrapper"
-          :class="{'-fullsize': !graphDataShowing}"
-        >
-          <transition
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated fadeOut"
-            :duration="600"
-          >
-            <q-card-section
-              v-show="!graphDataLoaded"
-              transition-show="scale"
-              transition-hide="scale"
-              style="height: 500px;"
-              class="flex justify-center flex-center"
-            >
-              <q-spinner-gears
-                color="primary"
-                size="160px"
-              />
-            </q-card-section>
-          </transition>
+      <div class="col-12">
 
-          <transition
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated fadeOut"
-            :duration="600"
-          >
-            <q-card-section
-              v-show="graphDataShowing && allDocuments === 0"
-              transition-show="scale"
-              transition-hide="scale"
-              style="height: 500px;"
-              class="flex justify-center flex-center column"
+        <!-- Last modified -->
+        <div class="col-12 q-mb-sm" v-if="lastModifiedFormatted">
+          <span class="text-caption" style="opacity: 0.5;">
+            Last modified: {{ lastModifiedFormatted }}
+          </span>
+        </div>
+
+        <!-- Category cards -->
+        <div class="col-12 q-mb-xl" v-if="dataLoaded && allDocuments > 0">
+          <div class="row q-gutter-md">
+            <q-card
+              v-for="cat in categoryStats"
+              :key="cat.name"
+              dark
+              class="categoryCard col"
             >
-            <div class="row justify-center flex-center">
-              <div class="col-12 q-mb-xl">
-                <h6 class="q-my-xs text-center">Welcome to your new project! Feel free to look around or...</h6>
-              </div>
-              <div class="col-12 q-mt-md q-mb-xl text-center">
-                <q-btn
+              <q-card-section>
+                <div class="text-overline text-primary" style="opacity: 0.8;">{{ cat.name }}</div>
+                <div class="text-h4 text-bold text-primary">{{ cat.total }}</div>
+                <div class="text-caption q-mb-sm" style="opacity: 0.5;">documents</div>
+                <q-linear-progress
+                  :value="cat.completionRatio"
                   color="primary"
-                  size="lg"
-                  outline
-                  class="q-px-xl q-py-xs"
-                  @click="newObjectAssignUID"
-                >
-                Create your first document!
-                </q-btn>
-              </div>
-            </div>
+                  track-color="grey-8"
+                  rounded
+                  size="8px"
+                  class="q-mb-xs"
+                />
+                <div class="text-caption" style="opacity: 0.45;">
+                  {{ cat.finished }} / {{ cat.total }} finished
+                </div>
+              </q-card-section>
+            </q-card>
+          </div>
+        </div>
 
-            </q-card-section>
-          </transition>
+        <!-- Empty state -->
+        <div class="col-12 q-mb-xl flex flex-center" v-if="dataLoaded && allDocuments === 0">
+          <div class="text-center" style="opacity: 0.5;">
+            <q-icon name="mdi-book-open-outline" size="48px" class="q-mb-md" />
+            <div class="text-h6">No documents yet.</div>
+            <div class="text-body2 q-mt-sm">Start by creating your first document.</div>
+            <q-btn outline color="primary" class="q-mt-lg" @click="newObjectAssignUID">
+              Create first document
+            </q-btn>
+          </div>
+        </div>
 
-          <transition
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated fadeOut"
-            appear
-            :duration="600"
-          >
-            <q-card-section
-              v-show="graphDataShowing && allDocuments > 0"
-              transition-show="scale"
-              transition-hide="scale"
-            >
-              <h5 class="q-px-xl q-my-lg">
-                Document distribution - <span class="text-bold text-primary">{{allDocuments}}</span> total
-              </h5>
-              <apexchart v-if="graphDataShowing" type="bar" height="350" width="900" :options="chartOptions" :series="series" />
-            </q-card-section>
-          </transition>
-
-        </q-card>
       </div>
 
-      <div class="lastOpenedList" v-if="allDocuments > 0 && graphDataShowing">
+      <div class="lastOpenedList" v-if="allDocuments > 0 && dataLoaded">
         <q-card
           dark
         >
@@ -141,30 +112,11 @@
             leave-active-class="animated fadeOut"
             :duration="600"
             >
-              <q-card-section
-                v-show="!graphDataLoaded"
-                transition-show="scale"
-                transition-hide="scale"
-                style="height: 500px;"
-                class="flex justify-center flex-center"
-              >
-                <q-spinner-gears
-                  color="primary"
-                  size="160px"
-                />
-              </q-card-section>
-            </transition>
-
-          <transition
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated fadeOut"
-            :duration="600"
-            >
             <q-card-section
-              v-show="graphDataShowing"
+              v-show="dataLoaded"
             >
 
-              <h5 class="q-px-md q-mt-lg q-mb-xs">Last opened</h5>
+              <h5 class="q-px-md q-mt-lg q-mb-xs">Recently edited</h5>
 
               <q-list
                 v-if="lastOpenedDocuments.length > 0"
@@ -306,9 +258,9 @@
 import { Component, Watch } from "vue-property-decorator"
 
 import BaseClass from "src/BaseClass"
-import { Loading, colors, uid, extend } from "quasar"
+import { Loading, uid, extend } from "quasar"
 import newDocumentDialog from "src/components/dialogs/NewDocument.vue"
-import { retrieveLastOpenedDocuments } from "src/scripts/projectManagement/projectManagent"
+import { retrieveLastOpenedDocuments, retrieveProjectLastModified } from "src/scripts/projectManagement/projectManagent"
 import { tipsTricks } from "src/scripts/utilities/tipsTricks"
 import { summonAllPlusheForms } from "src/scripts/utilities/plusheMascot"
 import { I_ShortenedDocument } from "src/interfaces/I_OpenedDocument"
@@ -421,37 +373,77 @@ export default class ProjectScreen extends BaseClass {
   allDocuments = 0
 
   /**
-   * Determines if the graph data finished loaded
+   * Category stats for overview cards
    */
-  graphDataLoaded = false
+  categoryStats: {
+    name: string
+    total: number
+    finished: number
+    completionRatio: number
+  }[] = []
 
   /**
-   * Determines if the graph is showing or not
+   * Formatted last modified date string
    */
-  graphDataShowing = false
+  lastModifiedFormatted = ""
+
+  /**
+   * Determines if the data has finished loading
+   */
+  dataLoaded = false
 
   /**
    * Loads graph data
    */
   async loadGraphData () {
-    this.populateChartOptions()
+    const allBlueprints = this.SGET_allBlueprints
 
-    const allBlueprings = this.SGET_allBlueprints
+    // Build category stats
+    const categoryMap: Record<string, { total: number, finished: number }> = {}
 
-    // Retrieve all documents
-    for (const blueprint of allBlueprings) {
-      const docCount = this.SGET_allDocumentsByType(blueprint._id).docs.length
+    for (const blueprint of allBlueprints) {
+      const cat = blueprint.category || "Other"
+      if (!categoryMap[cat]) categoryMap[cat] = { total: 0, finished: 0 }
 
-      this.allDocuments = this.allDocuments + docCount
+      const docs = this.SGET_allDocumentsByType(blueprint._id).docs
+      categoryMap[cat].total += docs.length
+      this.allDocuments += docs.length
 
-      this.series[0].data.push(docCount)
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      this.chartOptions.xaxis.categories.push(blueprint.namePlural)
+      docs.forEach((doc: any) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        const finished = (doc.extraFields as any[]).find((e: any) => e.id === "finishedSwitch")
+        if (finished?.value === true) {
+          categoryMap[cat].finished += 1
+        }
+      })
     }
-    this.graphDataLoaded = true
 
-    await this.sleep(600)
-    this.graphDataShowing = true
+    // Preserve pillar order
+    const pillarOrder = ["World", "Characters", "Story", "Gameplay", "Lore"]
+    this.categoryStats = pillarOrder
+      .filter(p => categoryMap[p])
+      .map(p => ({
+        name: p,
+        total: categoryMap[p].total,
+        finished: categoryMap[p].finished,
+        completionRatio: categoryMap[p].total > 0
+          ? categoryMap[p].finished / categoryMap[p].total
+          : 0
+      }))
+
+    // Last modified
+    const raw = await retrieveProjectLastModified()
+    if (raw) {
+      this.lastModifiedFormatted = new Date(raw).toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      })
+    }
+
+    this.dataLoaded = true
   }
 
   /****************************************************************/
@@ -546,139 +538,6 @@ export default class ProjectScreen extends BaseClass {
   }
 
   documentPreviewClose = ""
-  /**
-   * Graph series data
-   */
-  series = [{
-    name: "Documents",
-    data: [] as number[]
-  }]
-
-  /**
-   * Empty chart options
-   * This needs to load after load, otherwise the graph doesn't reload properly if the settings for dark/light mode change
-   */
-  chartOptions = {} as any
-
-  /**
-   * Loads up proper chart options into the object
-   */
-  populateChartOptions () {
-    this.chartOptions = {
-      colors: [colors.getBrand("primary")],
-      animations: {
-        enabled: true,
-        easing: "easeinout",
-        speed: 1000
-      },
-      grid: {
-        show: false
-      },
-      states: {
-        hover: {
-          filter: {
-            type: "none"
-          }
-        },
-        active: {
-          filter: {
-            type: "none"
-          }
-        }
-      },
-      chart: {
-        height: 350,
-        type: "bar",
-        toolbar: {
-          show: false
-        }
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 4,
-          dataLabels: {
-            position: "center" // top, center, bottom
-          }
-        }
-      },
-      dataLabels: {
-        dropShadow: {
-          enabled: true,
-          top: 1,
-          left: 1,
-          blur: 1,
-          color: "#000",
-          opacity: 0.65
-        },
-        enabled: true,
-        formatter: function (val: string) {
-          return val
-        },
-        offsetY: 20,
-        style: {
-          fontSize: "14px",
-          fontFamily: "Roboto, -apple-system, Helvetica Neue, Helvetica, Arial, sans-serif;",
-          colors: ["#fff"]
-        }
-      },
-      xaxis: {
-        categories: [] as string[],
-        position: "bottom",
-        labels: {
-          style: {
-            fontFamily: "Roboto, -apple-system, Helvetica Neue, Helvetica, Arial, sans-serif;",
-            colors: colors.getBrand("accent"),
-            cssClass: "docCountLabel"
-          }
-        },
-        axisBorder: {
-          show: true
-        },
-        axisTicks: {
-          show: false
-        },
-        tooltip: {
-          enabled: false
-        },
-        crosshairs: {
-
-          fill: {
-            type: "gradient",
-            gradient: {
-              colorFrom: "transparent",
-              colorTo: "transparent",
-              stops: [0, 100],
-              opacityFrom: 0,
-              opacityTo: 0
-            }
-          }
-        }
-      },
-      yaxis: {
-        axisBorder: {
-          show: false
-        },
-        tooltip: {
-          enabled: false
-        },
-        axisTicks: {
-          show: false
-        },
-        labels: {
-          show: false,
-          formatter: function (val: string) {
-            return val
-          },
-          style: {
-            fontSize: "14px",
-            fontFamily: "Roboto, -apple-system, Helvetica Neue, Helvetica, Arial, sans-serif;",
-            colors: "#dcdcdc"
-          }
-        }
-      }
-    }
-  }
-
   /****************************************************************/
   // NEW DOCUMENT DIALOG
   /****************************************************************/
@@ -757,55 +616,9 @@ body.body--dark {
   display: none !important;
 }
 
-.apexcharts-canvas {
-  padding-bottom: 50px;
-  padding-left: 30px;
-  padding-right: 30px;
-  box-sizing: content-box !important;
-
-  path {
-    stroke: none !important;
-  }
-
-  svg {
-    height: 425px;
-    overflow: visible;
-  }
-
-  .apexcharts-series path {
-    fill: var(--q-color-primary);
-  }
-}
-
 .projectContentWrapper {
   width: 100%;
   display: flex;
-}
-
-.documentGraphParent {
-  min-height: 525px;
-  max-height: 525px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  max-width: calc(100% - 110px);
-  width: 990px;
-  margin: auto;
-
-  &.-fullsize {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-.documentGraphWrapper {
-  min-height: 525px;
-  max-height: 525px;
-  overflow: hidden;
-  width: 990px;
-
-  &.-fullsize {
-    width: 100%;
-  }
 }
 
 .lastOpenedList {
@@ -822,12 +635,6 @@ body.body--dark {
 .lastOpenedListInner {
   max-height: 425px;
   overflow: auto;
-}
-
-.docCountLabel {
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
 }
 </style>
 
@@ -851,5 +658,10 @@ body.body--dark {
   .q-item__section--avatar {
     min-width: 44px;
   }
+}
+
+.categoryCard {
+  min-width: 160px;
+  flex: 1;
 }
 </style>

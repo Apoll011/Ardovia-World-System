@@ -1044,9 +1044,7 @@ import DialogBase from "src/components/dialogs/_DialogBase"
 import { extend } from "quasar"
 
 import { OptionsStateInteface } from "src/store/module-options/state"
-@Component({
-  components: { }
-})
+@Component({})
 export default class ProgramSettings extends DialogBase {
   /****************************************************************/
   // DIALOG CONTROL
@@ -1385,11 +1383,6 @@ export default class ProgramSettings extends DialogBase {
       }
     })
   }
-
-  /****************************************************************/
-  // Project existence check
-  /****************************************************************/
-
 }
 </script>
 

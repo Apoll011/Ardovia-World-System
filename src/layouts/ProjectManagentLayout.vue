@@ -36,7 +36,8 @@ export default class ProjectManagementLayout extends BaseClass {
     this.SSET_setProjectName(currentProjectName)
 
     if (currentProjectName.length > 0) {
-      this.$router.replace({ path: "/project" }).catch(() => {})
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      this.$router.replace({ path: "/project" })
     }
   }
 }
